@@ -1,0 +1,276 @@
+/* /////////////////////// CONTAINERS STYLING /////////////////////// */
+body {
+    max-width: 1920px;
+    max-height: 1080px;
+    overflow: hidden;
+    background-color: burlywood;
+}
+
+.container {
+    position: relative;
+    height: 98vh;
+    background-color: burlywood;
+}
+
+.home-screen, .game-screen {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* /////////////////////// HOME SCREEN STYLING /////////////////////// */
+
+.difficulty-buttons {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.menu-buttons {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+.button {
+    margin: 20px;
+    padding: 10px 20px;
+    letter-spacing: 3px;
+    font-weight: bold;
+    font-size: 25px;
+    cursor: pointer;
+    border: 12px solid transparent;
+}
+
+.button.selected {
+    border: 12px solid yellow
+}
+
+#gameTitle {
+    font-size: 40px;
+    letter-spacing: 3px;
+    font-weight: bold;
+    margin: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+#easyButton {
+    background-color: green;
+    color: white;
+}
+
+#hardButton {
+    background-color: salmon;
+    color: white;
+}
+
+#impossibleButton {
+    background-color: red;
+    color: white;
+}
+
+#startButton {
+    background-color: orange;
+    color: white;
+    padding-inline: 70px;
+    text-align: center;
+    opacity: 0.25;
+}
+
+#startButton.enabled {
+    opacity: 1;
+}
+
+#helpButton {
+    background-color: gray;
+    color: white;
+    padding-inline: 70px;
+}
+
+.message {
+    display: none;
+    position: fixed;
+    bottom: 100px;
+    right: 60px;
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+}
+  
+.help-window {
+    background-color: transparent;
+    max-width: 90%;
+    margin: 0 auto;
+}
+
+.close {
+    color:black;
+    position: relative;
+    top: 85px;
+    left: 650px; 
+    font-size: 60px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* /////////////////////// GAME SCREEN STYLING /////////////////////// */
+
+.home-button {
+    width: 20%;
+    height: 100px;
+    background-color: orange;
+    border: 1px solid #000;
+    color: white;
+    font-size: 3em;
+    letter-spacing: 3px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.game-screen {
+    display: none;
+}
+
+.room-furniture, .room-player {
+    position: absolute;
+}
+
+.room-gamebar {
+    position: relative;
+}
+
+#playerImage {
+    top: 450px;
+    left: 720px;
+    width: 25%;
+    pointer-events: none;
+}
+
+#wardrobeImage {
+    top: 400px;
+    left: 150px;
+    width: 25%;
+    cursor: pointer;
+}
+
+#tableImage {
+    top: 540px;
+    left: 700px;
+    width: 20%;
+    cursor: pointer;
+}
+
+#shelfImage {
+    top: 550px;
+    left: -44px;
+    width: 20%;
+    cursor: pointer;
+}
+
+#bedImage {
+    top: 550px;
+    left: 1450px;
+    width: 25%;
+    cursor: pointer;
+}
+
+.lowerBar-container {
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    bottom: 0;
+    width: 98%;
+    padding: 20px;
+    background-color: burlywood;
+}
+
+.slot {
+    width: 7%;
+    height: 100px;
+    background-color: #fff;
+    border: 1px solid #000;
+    margin-inline: 10px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.funiture-select {
+    width: 30%;
+    height: 100px;
+    margin-left: 100px;
+    margin-right: 100px;
+    background-color: lightgray;
+    border: 1px solid #000;
+    letter-spacing: 3px;
+    font-weight: bold;
+    font-size: 3em;
+    pointer-events: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.timer {
+    width: 20%;
+    height: 100px;
+    margin-left: 100px;
+    background-color: whitesmoke;
+    border: 1px solid #000;
+    color: red;
+    font-size: 3em;
+    letter-spacing: 3px;
+    font-weight: bold;
+    pointer-events: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.outfit-container {
+    position: absolute;
+    top: 0px;
+    left: 1520px;
+    height: 400px;
+    width: 400px;
+    background-color: whitesmoke;
+    pointer-events: none;
+}
+
+.outfit-image {
+    position: absolute;
+    width: 85%;
+    height: 85%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: burlywood;
+    background-size: 85%; 
+    border: 1px solid #000;
+    font-size: 3em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

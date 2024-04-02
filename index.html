@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Master of Dress Up Game by CJ</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="home-screen">
+            
+            <div id="gameTitle" class="game-title">Master of Dress Up Game</div>
+            <div class="difficulty-buttons">
+                <div id="easyButton" class="button">EASY</div>
+                <div id="hardButton" class="button">HARD</div>
+                <div id="impossibleButton" class="button">IMPOSSIBLE</div>
+            </div>
+            <div class="menu-buttons">
+                <div id="helpButton" class="button">HELP</div>
+                <div id="startButton" class="button" disabled>START</div>
+            </div>
+
+            <div id="helpMessage" class="message">
+                <div class="help-window">
+                  <span class="close">&times;</span>
+                  <img src="./assets/homescreen/instruction-message.png" alt="Instructions">
+                </div>
+            </div>
+            
+        </div> 
+        <div class="game-screen">
+            
+            <img id="roomImage" src="./assets/room/room-ph.jpg" alt="Room Image">
+            <img id="wardrobeImage" class="room-furniture" src="./assets/room/wardrobe-ph.png" alt="Wardrobe Image">
+            <img id="tableImage" class="room-furniture" src="./assets/room/table-ph.png" alt="Table Image">
+            <img id="shelfImage" class="room-furniture" src="./assets/room/shelf-ph.png" alt="Shelf Image">
+            <img id="bedImage" class="room-furniture" src="./assets/room/bed-ph.png" alt="Bed Image">
+            <img id="playerImage" class="room-player" src="./assets/characters/player-ph.png" alt="Player Image">
+            <div class="lowerBar-container">
+                <div id="funitureSelect" class="funiture-select"></div>
+                <div id="slot1" class="slot"></div>
+                <div id="slot2" class="slot"></div>
+                <div id="slot3" class="slot"></div>
+                <div id="slot4" class="slot"></div>
+                <div id="slot5" class="slot"></div>
+                <div id="timerDisplay" class="timer"></div>
+                <div id="homeButton" class="home-button">HOME</div>
+            </div>
+            <div class="outfit-container">
+                <div id="outfitImage" class="outfit-image"></div>
+            </div>
+            
+        </div>
+    </div>
+    <script src="js/main.js" type="module"></script>
+    <script src="js/room.js"></script>
+    <script src="js/selection.js"></script>
+    <script src="js/timer.js"></script>
+</body>
+</html>
