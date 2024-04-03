@@ -3,9 +3,9 @@
 
 /////////////////////// IMPORT JS FILES ///////////////////////
 
-import { createRoom } from './room.js';
+import { createRoom, resetFurnitureSelect } from './room.js';
 import { createTimer, resetTimer } from './timer.js';
-import { clearSlots, selectRandomWinningOutfit, displayWinningOutfit, getPlayerOutfit, matchOutfit } from './selection.js';
+import { clearSlots, selectRandomWinningOutfit, displayWinningOutfit, resetPlayerAppearance, matchOutfit } from './selection.js';
 
 /////////////////////// CREATE VARIABLES ///////////////////////
 
@@ -79,6 +79,7 @@ startButton.addEventListener("click", () => {
     initialize();
 });
 
+// Home Button Selection
 homeButton.addEventListener('click', function() {
     resetGame();
 });
@@ -92,17 +93,37 @@ function initialize() {
     createRoom();
     createTimer(currentDifficultyClass);
 
+    // Get the randomly generated winning outfit
+    const winningOutfit = selectRandomWinningOutfit();
+
     // Display the winning outfit image
-    displayWinningOutfit();
+    displayWinningOutfit(winningOutfit.outfitDisplay);
+    
+    // Console log winningOutfit
+    console.log("Winning Outfit:", winningOutfit);
+
+    // Check outfit match every second for a maximum of 30 seconds
+    let secondsElapsed = 0;
+    const intervalId = setInterval(function() {
+        if (secondsElapsed >= 30) {
+            clearInterval(intervalId); // Stop checking after 30 seconds
+        } else {
+            // Log the winning outfit
+            matchOutfit(winningOutfit);
+            secondsElapsed++;
+        }
+    }, 1000);
 }
 
 // Function to reset game 
 function resetGame() {
     hideGameScreen();
     enableHomeScreen();
-    resetTimer();
-    clearSlots();
     resetButtons();
+    resetTimer();
+    resetPlayerAppearance();
+    resetFurnitureSelect();
+    clearSlots();
 }
 
 // Function to enable start button 
@@ -121,21 +142,27 @@ function resetButtons () {
     difficultyButtons.forEach(button => {
         button.classList.remove('selected');
     });
-    startButton.classList.remove('enabled'); 
+    startButton.classList.remove('enabled');
+    startButton.setAttribute('disabled', 'disabled');
     currentDifficultyClass = '';
 }
+
 
 // Function hide home screen
 function hideHomeScreen () {
     document.querySelector('.home-screen').style.display = 'none';
 }
 
+
 // Function hide game screen
 function hideGameScreen () {
     document.querySelector('.game-screen').style.display = 'none';
 }
 
+
 // Function unhide home screen
 function enableHomeScreen () {
     document.querySelector('.home-screen').style.display = 'block';
 }
+
+

@@ -36,21 +36,33 @@
             <img id="tableImage" class="room-furniture" src="./assets/room/table-ph.png" alt="Table Image">
             <img id="shelfImage" class="room-furniture" src="./assets/room/shelf-ph.png" alt="Shelf Image">
             <img id="bedImage" class="room-furniture" src="./assets/room/bed-ph.png" alt="Bed Image">
-            <img id="playerImage" class="room-player" src="./assets/characters/player-ph.png" alt="Player Image">
+            <div class="player-container">
+                <img id="playerImage" class="room-player" src="./assets/characters/player-ph.png" alt="Player Image">
+                <div id="cap" class="player-outfit"></div>
+                <div id="top" class="player-outfit"></div>
+                <div id="bottom" class="player-outfit"></div>
+                <div id="shoe" class="player-outfit"></div>
+            </div>
             <div class="lowerBar-container">
                 <div id="funitureSelect" class="funiture-select"></div>
                 <div id="slot1" class="slot"></div>
                 <div id="slot2" class="slot"></div>
                 <div id="slot3" class="slot"></div>
                 <div id="slot4" class="slot"></div>
-                <div id="slot5" class="slot"></div>
                 <div id="timerDisplay" class="timer"></div>
                 <div id="homeButton" class="home-button">HOME</div>
             </div>
             <div class="outfit-container">
                 <div id="outfitImage" class="outfit-image"></div>
             </div>
-            
+            <div class="end-screen">
+                <div class="win1-screen"></div>
+                <div class="win2-screen"></div>
+                <div class="win3-screen"></div>
+                <div class="lose1-screen"></div>
+                <div class="lose2-screen"></div>
+                <div class="lose3-screen"></div>  
+            </div>
         </div>
     </div>
     <script src="js/main.js" type="module"></script>

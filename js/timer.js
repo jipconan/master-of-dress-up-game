@@ -6,9 +6,9 @@
 
 // Set difficulity and seconds
 const difficultyTimes = {
-    'easy': 45,
-    'hard': 25,
-    'impossible': 10
+    'easy': 30,
+    'hard': 15,
+    'impossible': 8
 };
 
 // Set initial currentTimer
@@ -38,8 +38,7 @@ class Timer {
         this.interval = setInterval(() => {
             if (this.remainingTime === 0) {
                 // If times up, stop timer and execute callback
-                this.stop();
-                this.callback();
+                this.reset();
             } else {
                 // Decrement remaining time and update timer display
                 this.remainingTime--;
@@ -103,5 +102,7 @@ function resetTimer() {
         currentTimer.reset();
     }
 }
+
+/////////////////////// EXPORT ///////////////////////
 
 export { createTimer, resetTimer };

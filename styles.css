@@ -1,4 +1,6 @@
 /* /////////////////////// CONTAINERS STYLING /////////////////////// */
+
+/* Body styles */
 body {
     max-width: 1920px;
     max-height: 1080px;
@@ -6,12 +8,14 @@ body {
     background-color: burlywood;
 }
 
+/* Main container styles */
 .container {
     position: relative;
     height: 98vh;
     background-color: burlywood;
 }
 
+/* Home and game screen styles */
 .home-screen, .game-screen {
     position: absolute;
     top: 50%;
@@ -25,13 +29,15 @@ body {
 
 /* /////////////////////// HOME SCREEN STYLING /////////////////////// */
 
+/* Difficulty buttons container */
 .difficulty-buttons {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
 }
 
+/* Menu buttons container */
 .menu-buttons {
     display: flex;
     flex-direction: row;
@@ -40,6 +46,7 @@ body {
     color: white;
 }
 
+/* Common button styles */
 .button {
     margin: 20px;
     padding: 10px 20px;
@@ -50,12 +57,14 @@ body {
     border: 12px solid transparent;
 }
 
+/* Selected button style */
 .button.selected {
     border: 12px solid yellow
 }
 
+/* Game title styles */
 #gameTitle {
-    font-size: 40px;
+    font-size: 60px;
     letter-spacing: 3px;
     font-weight: bold;
     margin: 10px;
@@ -65,6 +74,7 @@ body {
     justify-content: center;
 }
 
+/* Difficulty button styles */
 #easyButton {
     background-color: green;
     color: white;
@@ -80,6 +90,7 @@ body {
     color: white;
 }
 
+/* Start button styles */
 #startButton {
     background-color: orange;
     color: white;
@@ -92,33 +103,36 @@ body {
     opacity: 1;
 }
 
+/* Help button styles */
 #helpButton {
     background-color: gray;
     color: white;
     padding-inline: 70px;
 }
 
+/* Message styles */
 .message {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     display: none;
-    position: fixed;
-    bottom: 100px;
-    right: 60px;
-    width: 100%;
-    height: 100%;
-    margin: 0 auto;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
 }
-  
+
 .help-window {
     background-color: transparent;
-    max-width: 90%;
     margin: 0 auto;
 }
 
 .close {
     color:black;
     position: relative;
-    top: 85px;
-    left: 650px; 
+    top: 100px;
+    left: 1050px; 
     font-size: 60px;
     font-weight: bold;
 }
@@ -132,6 +146,7 @@ body {
 
 /* /////////////////////// GAME SCREEN STYLING /////////////////////// */
 
+/* Home button styles */
 .home-button {
     width: 20%;
     height: 100px;
@@ -145,28 +160,30 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    cursor: pointer;
 }
 
+/* Game screen styles */
 .game-screen {
     display: none;
 }
 
-.room-furniture, .room-player {
+/* Furniture styles */
+.room-furniture {
     position: absolute;
 }
 
+/* Selected furniture style */
+.room-furniture.selected {
+    border: 12px solid yellow;
+    border-radius: 10%; 
+}
+
+/* Game bar styles */
 .room-gamebar {
     position: relative;
 }
 
-#playerImage {
-    top: 450px;
-    left: 720px;
-    width: 25%;
-    pointer-events: none;
-}
-
+/* Furniture images styles */
 #wardrobeImage {
     top: 400px;
     left: 150px;
@@ -195,6 +212,7 @@ body {
     cursor: pointer;
 }
 
+/* Lower bar container styles */
 .lowerBar-container {
     display: flex;
     justify-content: space-between;
@@ -205,6 +223,7 @@ body {
     background-color: burlywood;
 }
 
+/* Slot styles */
 .slot {
     width: 7%;
     height: 100px;
@@ -217,6 +236,7 @@ body {
     align-items: center;
 }
 
+/* Furniture select styles */
 .funiture-select {
     width: 30%;
     height: 100px;
@@ -233,6 +253,7 @@ body {
     align-items: center;
 }
 
+/* Timer styles */
 .timer {
     width: 20%;
     height: 100px;
@@ -249,6 +270,7 @@ body {
     align-items: center;
 }
 
+/* Outfit container styles */
 .outfit-container {
     position: absolute;
     top: 0px;
@@ -259,6 +281,7 @@ body {
     pointer-events: none;
 }
 
+/* Outfit image styles */
 .outfit-image {
     position: absolute;
     width: 85%;
@@ -273,4 +296,42 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+/* Player container styles */
+.player-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 500px;
+    width: 500px;
+    pointer-events: none;
+}
+
+/* Room player styles */
+.room-player {
+    position: relative;
+    top: 85%;
+    left: 50%;
+    width: 90%;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+}
+
+/* Player outfit styles */
+.player-outfit {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: -200px;
+    left: 210px;
+    height: 70px;
+    width: 70px;
+    background-color: whitesmoke;
+    background-repeat: no-repeat;
+    background-size: cover;
+    pointer-events: none;
+    margin-top: 20px;
 }

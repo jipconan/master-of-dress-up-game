@@ -30,21 +30,37 @@ class Room {
 
     selectFurniture () {
         wardrobeDom.addEventListener('click', function() {
+            tableDom.classList.remove('selected');
+            bedDom.classList.remove('selected');
+            shelfDom.classList.remove('selected');
+            wardrobeDom.classList.add('selected');
             populateSlots('wardrobe');
             funitureDom.textContent = 'WARDROBE';
         });
         
         tableDom.addEventListener('click', function() {
+            wardrobeDom.classList.remove('selected');
+            bedDom.classList.remove('selected');
+            shelfDom.classList.remove('selected');
+            tableDom.classList.add('selected');
             populateSlots('table');
             funitureDom.textContent = 'TABLE';
         });
         
         bedDom.addEventListener('click', function() {
+            wardrobeDom.classList.remove('selected');
+            tableDom.classList.remove('selected');
+            shelfDom.classList.remove('selected');
+            bedDom.classList.add('selected');
             populateSlots('bed');
             funitureDom.textContent = 'BED';
         });
         
         shelfDom.addEventListener('click', function() {
+            wardrobeDom.classList.remove('selected');
+            tableDom.classList.remove('selected');
+            bedDom.classList.remove('selected');
+            shelfDom.classList.add('selected');
             populateSlots('shelf');
             funitureDom.textContent = 'SHELF';
         });
@@ -60,4 +76,14 @@ function createRoom () {
     newRoom.selectFurniture()
  }
 
-export { createRoom };
+ function resetFurnitureSelect () {
+    wardrobeDom.classList.remove('selected');
+    bedDom.classList.remove('selected');
+    tableDom.classList.remove('selected');
+    shelfDom.classList.remove('selected');
+    funitureDom.textContent = ''
+}
+
+/////////////////////// EXPORT ///////////////////////
+
+export { createRoom, resetFurnitureSelect };
