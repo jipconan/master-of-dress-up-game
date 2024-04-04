@@ -24,7 +24,7 @@ const timerDom = document.getElementById('timerDisplay');
 class Timer {
     constructor() {
         this.interval = null;
-        this.remainingTime = 0;
+        this.remainingTime = '';
     }
 
     start(duration) {
@@ -37,9 +37,12 @@ class Timer {
         // Start interval to update timer display every second
         this.interval = setInterval(() => {
             if (this.remainingTime === 0) {
+
                 // If times up, stop timer and execute callback
                 this.reset();
+                
             } else {
+
                 // Decrement remaining time and update timer display
                 this.remainingTime--;
                 this.updateTimerDisplay(); 
@@ -50,12 +53,18 @@ class Timer {
     // Reset Timer
     reset() {
         clearInterval(this.interval);
-        this.remainingTime = 0;
+        this.remainingTime = '';
         this.updateTimerDisplay();
+    }
+
+    // Stop Timer
+    stop() {
+        clearInterval(this.interval);
     }
 
     // Update timer display with current remaining time
     updateTimerDisplay() {
+
         // Calculate remaining time divide by 60 and remove decimal numbers
         const minutes = Math.floor(this.remainingTime / 60);
 
@@ -103,6 +112,13 @@ function resetTimer() {
     }
 }
 
+// Function to reset timer
+function stopTimer() {
+    if (currentTimer) {
+        currentTimer.stop();
+    }
+}
+
 /////////////////////// EXPORT ///////////////////////
 
-export { createTimer, resetTimer };
+export { createTimer, resetTimer, stopTimer };

@@ -8,13 +8,6 @@ body {
     background-color: burlywood;
 }
 
-/* Main container styles */
-.container {
-    position: relative;
-    height: 98vh;
-    background-color: burlywood;
-}
-
 /* Home and game screen styles */
 .home-screen, .game-screen {
     position: absolute;
@@ -162,10 +155,6 @@ body {
     align-items: center;
 }
 
-/* Game screen styles */
-.game-screen {
-    display: none;
-}
 
 /* Furniture styles */
 .room-furniture {
@@ -334,4 +323,105 @@ body {
     background-size: cover;
     pointer-events: none;
     margin-top: 20px;
+}
+
+/* /////////////////////// WIN LOSE STYLING /////////////////////// */
+
+/* end-screen styles */
+.end-screen {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 720px;
+    width: 1280px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: whitesmoke;
+    background-repeat: no-repeat;
+}
+
+/* notouch-screen styles */
+.notouch-screen {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 1080px;
+    width: 1920px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: whitesmoke;
+    opacity: 0.5; 
+    background-repeat: no-repeat;
+    pointer-events: auto;
+    z-index: 9996; 
+}
+
+/* Home button styles */
+.win-screen, .lose-screen {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 620px;
+    width: 1180px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: coral;
+    z-index: 9997; 
+}
+
+/* Win/Lose text styles */
+.win-text, .lose-text {
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 520px;
+    width: 520px;
+    font-size: 5em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999; 
+}
+
+/* Win/Lose image styles */
+.win-image, .lose-image {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 520px;
+    width: 520px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color:yellow;
+    z-index: 9997; 
+}
+
+/* Home button 2 styles */
+.home-button2 {
+    position: absolute;
+    top: 85%;
+    left: 85%;
+    transform: translate(-50%, -50%);
+    width: 20%;
+    height: 100px;
+    background-color: orange;
+    border: 1px solid #000;
+    color: white;
+    font-size: 3em;
+    letter-spacing: 3px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9998; 
 }

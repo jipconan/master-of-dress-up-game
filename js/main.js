@@ -4,12 +4,14 @@
 /////////////////////// IMPORT JS FILES ///////////////////////
 
 import { createRoom, resetFurnitureSelect } from './room.js';
-import { createTimer, resetTimer } from './timer.js';
-import { clearSlots, selectRandomWinningOutfit, displayWinningOutfit, resetPlayerAppearance, matchOutfit } from './selection.js';
+import { createTimer, resetTimer, stopTimer } from './timer.js';
+import { clearSlots, resetPlayerAppearance, playerOutfit } from './selection.js';
+import { selectRandomWinningOutfit, displayWinningOutfit } from './outfit.js';
 
 /////////////////////// CREATE VARIABLES ///////////////////////
 
 let currentDifficultyClass = '';
+let timerInstance = '';
 
 /////////////////////// CACHE DOM ELEMENTS ///////////////////////
 
@@ -21,6 +23,7 @@ const impossibleButton = document.getElementById('impossibleButton');
 const helpButton = document.getElementById('helpButton');
 const startButton = document.getElementById('startButton');
 const homeButton = document.getElementById('homeButton');
+const homeButton2 = document.getElementById('homeButton2');
 
 // Cache Popout elements
 const helpModal = document.getElementById('helpModal');
@@ -28,6 +31,10 @@ const closeHelp = document.querySelector('.close');
 
 // Hide Elements
 document.querySelector('.game-screen').style.display = 'none'; 
+document.querySelector('.end-screen').style.display = 'none'; 
+document.querySelector('.win-screen').style.display = 'none'; 
+document.querySelector('.lose-screen').style.display = 'none'; 
+
 
 /////////////////////// CREATE EVENT LISTENERS ///////////////////////
 
@@ -84,14 +91,21 @@ homeButton.addEventListener('click', function() {
     resetGame();
 });
 
+// Home Button 2 Selection
+homeButton2.addEventListener('click', function() {
+    resetGame();
+    hideEndScreen();
+
+});
+
 /////////////////////// CREATE FUNCTIONS TO INVOKE ELEMENTS ///////////////////////
 
 // CREATE FUNCTIONS TO START GAME AND INVOKE OTHER ELEMENTS
+// Define timerInstance globally
 // Initialize function
-function initialize() { 
+function initialize() {
     hideHomeScreen();
     createRoom();
-    createTimer(currentDifficultyClass);
 
     // Get the randomly generated winning outfit
     const winningOutfit = selectRandomWinningOutfit();
@@ -102,28 +116,45 @@ function initialize() {
     // Console log winningOutfit
     console.log("Winning Outfit:", winningOutfit);
 
-    // Check outfit match every second for a maximum of 30 seconds
-    let secondsElapsed = 0;
+    // Create timer based on the current difficulty and store it in timerInstance
+    timerInstance = createTimer(currentDifficultyClass);
+    
+    // Check outfit match every second for a maximum of the remaining time from the timerInstance
     const intervalId = setInterval(function() {
-        if (secondsElapsed >= 30) {
-            clearInterval(intervalId); // Stop checking after 30 seconds
+
+        // Console log remaining time of timer
+        console.log(timerInstance.remainingTime);
+        
+        // If timer is 0, stop check for outfit match and game lose. 
+        if (timerInstance.remainingTime === 0) {
+            clearInterval(intervalId);
+            loseScreen();
+
         } else {
-            // Log the winning outfit
-            matchOutfit(winningOutfit);
-            secondsElapsed++;
-        }
+
+            // Else if outfit matches game wins.
+            if (matchOutfit(winningOutfit)) {
+                
+                // Stop check for outfit match and stop timer, game wins.
+                clearInterval(intervalId); 
+                winScreen();
+                stopTimer();
+            }
+        }       
     }, 1000);
 }
 
+
 // Function to reset game 
 function resetGame() {
-    hideGameScreen();
-    enableHomeScreen();
-    resetButtons();
     resetTimer();
     resetPlayerAppearance();
     resetFurnitureSelect();
     clearSlots();
+    resetButtons();
+    hideGameScreen();
+    hideEndScreen();
+    enableHomeScreen();
 }
 
 // Function to enable start button 
@@ -165,4 +196,58 @@ function enableHomeScreen () {
     document.querySelector('.home-screen').style.display = 'block';
 }
 
+// CREATE FUNCTIONS FOR WIN LOSE STATE
+// Function to match the player's outfit with the provided winning outfit
+function matchOutfit(winningOutfit) {
+    
+    // Check if playerOutfit is empty
+    if (playerOutfit.length === 0) {
+      console.log("Player outfit is empty.");
+      return false;
+    }
+  
+    // Initialize catagory for outfit matching
+    const categories = ['top', 'bottom', 'cap', 'shoe'];
 
+    // Check if all categories are present in playerOutfit
+    const playerCategories = playerOutfit.map(item => item.category);
+
+    // Ensure that every required category is present in the player's outfit
+    // If any category is missing, return false
+    if (!categories.every(category => playerCategories.includes(category))) {
+      console.log("Not all categories are present in player outfit.");
+      return false;
+    }
+  
+    // Iterate over each category and check if it matches the winning outfit
+    for (let category of categories) {
+      const playerItem = playerOutfit.find(item => item.category === category);
+      const winningItem = winningOutfit[category];
+  
+      // If the winningItem is not found or its imageUrl doesn't match, return false
+      if (!winningItem || playerItem.imageUrl !== winningItem.imageUrl || playerItem.category !== winningItem.category) {
+        console.log("Outfits do not match.");
+        return false;
+      }
+    }
+  
+    // If all categories match, log success and return true
+    console.log("Outfits match");
+    return true;
+  }
+
+  function winScreen () {
+    document.querySelector('.end-screen').style.display = 'block'; 
+    document.querySelector('.win-screen').style.display = 'block';
+  }
+
+  function loseScreen () {
+    document.querySelector('.end-screen').style.display = 'block'; 
+    document.querySelector('.lose-screen').style.display = 'block';
+  }
+
+  function hideEndScreen () {
+    document.querySelector('.end-screen').style.display = 'none'; 
+    document.querySelector('.win-screen').style.display = 'none'; 
+    document.querySelector('.lose-screen').style.display = 'none'; 
+  }

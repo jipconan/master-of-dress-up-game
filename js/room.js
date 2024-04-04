@@ -76,6 +76,7 @@ function createRoom () {
     newRoom.selectFurniture()
  }
 
+ // Function to reset furniture selections
  function resetFurnitureSelect () {
     wardrobeDom.classList.remove('selected');
     bedDom.classList.remove('selected');

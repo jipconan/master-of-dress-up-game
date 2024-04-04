@@ -69,46 +69,6 @@ const shelfClothes = {
   slot4: shoeImport[3],
 };
 
-// Define winning outfit with my own determined outfit
-const winningOutfits = [
-  { // Outfit 1
-    top: { category: 'top', imageUrl: topImport[0] },
-    bottom: { category: 'bottom', imageUrl: bottomImport[1] },
-    cap: { category: 'cap', imageUrl: capImport[2] },
-    shoe: { category: 'shoe', imageUrl: shoeImport[3] },
-    outfitDisplay: "./assets/outfit/outfit1-ph.png",
-  },
-  { // Outfit 2
-    top: { category: 'top', imageUrl: topImport[1] },
-    bottom: { category: 'bottom', imageUrl: bottomImport[2] },
-    cap: { category: 'cap', imageUrl: capImport[3] },
-    shoe: { category: 'shoe', imageUrl: shoeImport[0] },
-    outfitDisplay: "./assets/outfit/outfit2-ph.png",
-  },
-  { // Outfit 3
-    top: { category: 'top', imageUrl: topImport[2] },
-    bottom: { category: 'bottom', imageUrl: bottomImport[3] },
-    cap: { category: 'cap', imageUrl: capImport[0] },
-    shoe: { category: 'shoe', imageUrl: shoeImport[1] },
-    outfitDisplay: "./assets/outfit/outfit3-ph.png",
-  },
-  { // Outfit 4
-    top: { category: 'top', imageUrl: topImport[3] },
-    bottom: { category: 'bottom', imageUrl: bottomImport[0] },
-    cap: { category: 'cap', imageUrl: capImport[1] },
-    shoe: { category: 'shoe', imageUrl: shoeImport[2] },
-    outfitDisplay: "./assets/outfit/outfit4-ph.png",
-  },
-  { // Outfit 5
-    top: { category: 'top', imageUrl: topImport[0] },
-    bottom: { category: 'bottom', imageUrl: bottomImport[2] },
-    cap: { category: 'cap', imageUrl: capImport[3] },
-    shoe: { category: 'shoe', imageUrl: shoeImport[1] },
-    outfitDisplay: "./assets/outfit/outfit5-ph.png",
-  }
-];
-
-
 /////////////////////// CREATE EVENT LISTENERS ///////////////////////
 /////////////////////// CREATE CONSTRUCTOR ///////////////////////
 /////////////////////// CREATE FUNCTIONS TO INVOKE ELEMENTS ///////////////////////
@@ -143,7 +103,9 @@ function populateSlots(selectedFurniture) {
   for (let i = 1; i <= slotsTotal; i++) { 
     const slot = `slot${i}`;
     const imageUrl = clothes[slot];
-    const category = getCategoryFromSlot(slot); // Get clothing category from the slot
+
+    // Get clothing category from the slot
+    const category = getCategoryFromSlot(slot);
 
     // Create image element for the clothing item
     const img = document.createElement('img');
@@ -201,8 +163,6 @@ function getCategoryFromSlot(slot) {
   }
 }
 
-
-
 // Function to clear the content of all slots
 function clearSlots() {
 
@@ -214,18 +174,6 @@ function clearSlots() {
     // Clear the content
     slot.innerHTML = ''; 
   }
-}
-
-// Function to select a random winning outfit
-function selectRandomWinningOutfit() {
-  const randomIndex = Math.floor(Math.random() * winningOutfits.length);
-  return winningOutfits[randomIndex];
-}
-
-// Function to display the winning outfit image
-function displayWinningOutfit(outfitDisplay) {
-  const outfitContainer = document.getElementById('outfitImage');
-  outfitContainer.innerHTML = `<img src="${outfitDisplay}" alt="Winning Outfit">`;
 }
 
 // Function to update player appearance
@@ -244,30 +192,31 @@ function updatePlayerAppearance() {
 
     // Create img element for the clothing item
     const img = document.createElement('img');
-    img.setAttribute('src', imageUrl); // Set src attribute
+
+    // Set src attribute
+    img.setAttribute('src', imageUrl);
     img.alt = slot;
 
     // Append the image to the corresponding player outfit element
-    switch (slot) {
-      case 'slot1':
+    switch (item.category) {
+      case 'top':
         document.getElementById('top').appendChild(img);
         break;
-      case 'slot2':
+      case 'bottom':
         document.getElementById('bottom').appendChild(img);
         break;
-      case 'slot3':
+      case 'cap':
         document.getElementById('cap').appendChild(img);
         break;
-      case 'slot4':
+      case 'shoe':
         document.getElementById('shoe').appendChild(img);
         break;
       default:
-        console.log("Invalid slot:", slot);
+        console.log("Invalid category:", item.category);
         break;
     }
   });
 }
-
 
 // Function to reset the player's appearance
 function resetPlayerAppearance() {
@@ -282,46 +231,17 @@ function resetPlayerAppearance() {
   playerOutfit = [];
 }
 
-// Function to match the player's outfit with the provided winning outfit
-function matchOutfit(winningOutfit) {
-  // Check if playerOutfit is empty
-  if (playerOutfit.length === 0) {
-    console.log("Player outfit is empty.");
-    return false;
-  }
-
-  // Check if all categories are present in playerOutfit
-  const categories = ['top', 'bottom', 'cap', 'shoe'];
-  const playerCategories = playerOutfit.map(item => item.category);
-  if (!categories.every(category => playerCategories.includes(category))) {
-    console.log("Not all categories are present in player outfit.");
-    return false;
-  }
-
-  // Iterate over each category and check if it matches the winning outfit
-  for (let category of categories) {
-    const playerItem = playerOutfit.find(item => item.category === category);
-    const winningItem = winningOutfit[category];
-
-    // If the winningItem is not found or its imageUrl doesn't match, return false
-    if (!winningItem || playerItem.imageUrl !== winningItem.imageUrl || playerItem.category !== winningItem.category) {
-      console.log("Outfits do not match.");
-      return false;
-    }
-  }
-
-  // If all categories match, log success and return true
-  console.log("Outfits match");
-  return true;
-}
-
-
-
-
-
-
-
-
 /////////////////////// EXPORT ///////////////////////
 
-export { populateSlots, clearSlots, selectRandomWinningOutfit, displayWinningOutfit, resetPlayerAppearance, matchOutfit };
+// Export functions and variables
+export {
+  topImport, 
+  bottomImport, 
+  capImport, 
+  shoeImport, 
+  wardrobeClothes, 
+  tableClothes, 
+  bedClothes, 
+  shelfClothes, 
+  playerOutfit, 
+  populateSlots, getCategoryFromSlot, clearSlots, updatePlayerAppearance, resetPlayerAppearance };
