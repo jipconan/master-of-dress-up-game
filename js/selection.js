@@ -9,36 +9,36 @@ const slotsTotal = 4;
 
 // Import image assets
 const topImport = [
-  "./assets/tops/tops-red.png",
-  "./assets/tops/tops-orange.png",
-  "./assets/tops/tops-yellow.png",
-  "./assets/tops/tops-green.png",
-  "./assets/tops/tops-blue.png",
+  { category: 'top', tag: 'top1', imageUrl: "./assets/tops/tops-red.png" },
+  { category: 'top', tag: 'top2', imageUrl: "./assets/tops/tops-orange.png" },
+  { category: 'top', tag: 'top3', imageUrl: "./assets/tops/tops-yellow.png" },
+  { category: 'top', tag: 'top4', imageUrl: "./assets/tops/tops-green.png"},
+  { category: 'top', tag: 'top5', imageUrl: "./assets/tops/tops-blue.png"},
 ];
 
 const bottomImport = [
-  "./assets/bottoms/bottoms-black.png",
-  "./assets/bottoms/bottoms-white.png",
-  "./assets/bottoms/bottoms-blue.png",
-  "./assets/bottoms/bottoms-beige.png",
-  "./assets/bottoms/bottoms-grey.png",
+  { category: 'bottom', tag: 'bottom1', imageUrl: "./assets/bottoms/bottoms-black.png" },
+  { category: 'bottom', tag: 'bottom2', imageUrl: "./assets/bottoms/bottoms-white.png" },
+  { category: 'bottom', tag: 'bottom3', imageUrl: "./assets/bottoms/bottoms-blue.png" },
+  { category: 'bottom', tag: 'bottom4', imageUrl: "./assets/bottoms/bottoms-beige.png"},
+  { category: 'bottom', tag: 'bottom5', imageUrl: "./assets/bottoms/bottoms-grey.png"},
 ];
 
 const capImport = [
-  "./assets/caps/caps-black.png",
-  "./assets/caps/caps-white.png",
-  "./assets/caps/caps-blue.png",
-  "./assets/caps/caps-red.png",
-  "./assets/caps/caps-double.png",
-]
+  { category: 'cap', tag: 'cap1', imageUrl: "./assets/caps/caps-black.png" },
+  { category: 'cap', tag: 'cap1', imageUrl: "./assets/caps/caps-white.png" },
+  { category: 'cap', tag: 'cap1', imageUrl: "./assets/caps/caps-blue.png" },
+  { category: 'cap', tag: 'cap1', imageUrl: "./assets/caps/caps-red.png"},
+  { category: 'cap', tag: 'cap1', imageUrl: "./assets/caps/caps-double.png"},
+];
 
 const shoeImport = [
-  "./assets/shoes/shoes-black.png",
-  "./assets/shoes/shoes-white.png",
-  "./assets/shoes/shoes-blue.png",
-  "./assets/shoes/shoes-red.png",
-  "./assets/shoes/shoes-brown.png",
-]
+  { category: 'shoe', tag: 'shoe1', imageUrl: "./assets/shoes/shoes-black.png" },
+  { category: 'shoe', tag: 'shoe2', imageUrl: "./assets/shoes/shoes-white.png" },
+  { category: 'shoe', tag: 'shoe3', imageUrl: "./assets/shoes/shoes-blue.png" },
+  { category: 'shoe', tag: 'shoe4', imageUrl: "./assets/shoes/shoes-red.png"},
+  { category: 'shoe', tag: 'shoe5', imageUrl: "./assets/shoes/shoes-brown.png"},
+];
 
 // Define clothes data
 const wardrobeClothes = {
@@ -74,11 +74,12 @@ const shelfClothes = {
 /////////////////////// CREATE FUNCTIONS TO INVOKE ELEMENTS ///////////////////////
 
 // Function to populate the slots with clothes based on the selected furniture
+// playerOutfit array is unsorted order but will be used for updatePlayerOutfit later
 function populateSlots(selectedFurniture) {
   // Clear existing slots
   clearSlots();
 
-  let clothes;
+  let clothes = {};
 
   // Determine the clothes based on the selected furniture
   switch (selectedFurniture) {
@@ -102,33 +103,35 @@ function populateSlots(selectedFurniture) {
   // Iterate over the selected furniture's clothes slots
   for (let i = 1; i <= slotsTotal; i++) { 
     const slot = `slot${i}`;
-    const imageUrl = clothes[slot];
-
-    // Get clothing category from the slot
-    const category = getCategoryFromSlot(slot);
+    const imageUrl = clothes[slot].imageUrl;
+    const category = clothes[slot].category;
+    const tag = clothes[slot].tag;
 
     // Create image element for the clothing item
     const img = document.createElement('img');
 
     // Set src attribute
-    img.setAttribute('src', imageUrl);
-    img.alt = slot;
-    img.classList.add('clothing-item');
+    Object.assign(img, { 
+      src: imageUrl, 
+      alt: slot,
+      className: 'clothing-item',
+    });
 
     // Add event listener to handle selection
     img.addEventListener('click', function() {
 
       // Check if the clothing item is already in the playerOutfit array
       const index = playerOutfit.findIndex(item => item.slot === slot);
+      
       if (index === -1) {
 
         // If not, add the new clothing item to the playerOutfit array
-        playerOutfit.push({ slot, category, imageUrl });
+        playerOutfit.push({ category, tag, imageUrl });
 
       } else {
 
         // If the same slot of clothing is already selected, replace it
-        playerOutfit[index] = { slot, category, imageUrl };
+        playerOutfit[index] = { category, tag, imageUrl };
       }
 
       // Update the player's appearance
@@ -147,22 +150,6 @@ function populateSlots(selectedFurniture) {
   }
 }
 
-// Function to get the clothing category from the slot name
-function getCategoryFromSlot(slot) {
-  switch (slot) {
-    case 'slot1':
-      return 'top';
-    case 'slot2':
-      return 'bottom';
-    case 'slot3':
-      return 'cap';
-    case 'slot4':
-      return 'shoe';
-    default:
-      return '';
-  }
-}
-
 // Function to clear the content of all slots
 function clearSlots() {
 
@@ -177,6 +164,7 @@ function clearSlots() {
 }
 
 // Function to update player appearance
+// Using the playerOutfit array and update to html accordingly to their category
 function updatePlayerAppearance() {
 
   // Clear all player outfit elements
@@ -194,8 +182,10 @@ function updatePlayerAppearance() {
     const img = document.createElement('img');
 
     // Set src attribute
-    img.setAttribute('src', imageUrl);
-    img.alt = slot;
+      Object.assign(img, { 
+        src: imageUrl, 
+        alt: slot,
+      });
 
     // Append the image to the corresponding player outfit element
     switch (item.category) {
@@ -244,4 +234,4 @@ export {
   bedClothes, 
   shelfClothes, 
   playerOutfit, 
-  populateSlots, getCategoryFromSlot, clearSlots, updatePlayerAppearance, resetPlayerAppearance };
+  populateSlots, clearSlots, updatePlayerAppearance, resetPlayerAppearance };

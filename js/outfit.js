@@ -11,38 +11,42 @@ import { topImport, bottomImport, capImport, shoeImport } from './selection.js';
 // Define winning outfit with my own determined outfit
 const winningOutfits = [
   { // Outfit 1
-    top: { category: 'top', imageUrl: topImport[0] },
-    bottom: { category: 'bottom', imageUrl: bottomImport[1] },
-    cap: { category: 'cap', imageUrl: capImport[2] },
-    shoe: { category: 'shoe', imageUrl: shoeImport[3] },
+    top: topImport[0],
+    bottom: bottomImport[1],
+    cap: capImport[2],
+    shoe: shoeImport[3],
     outfitDisplay: "./assets/outfit/outfit1-ph.png",
   },
+
   { // Outfit 2
-    top: { category: 'top', imageUrl: topImport[1] },
-    bottom: { category: 'bottom', imageUrl: bottomImport[2] },
-    cap: { category: 'cap', imageUrl: capImport[3] },
-    shoe: { category: 'shoe', imageUrl: shoeImport[0] },
+    top: topImport[1],
+    bottom: bottomImport[2],
+    cap: capImport[3],
+    shoe: shoeImport[0],
     outfitDisplay: "./assets/outfit/outfit2-ph.png",
   },
+
   { // Outfit 3
-    top: { category: 'top', imageUrl: topImport[2] },
-    bottom: { category: 'bottom', imageUrl: bottomImport[3] },
-    cap: { category: 'cap', imageUrl: capImport[0] },
-    shoe: { category: 'shoe', imageUrl: shoeImport[1] },
+    top: topImport[2],
+    bottom: bottomImport[3] ,
+    cap: capImport[0],
+    shoe: shoeImport[1],
     outfitDisplay: "./assets/outfit/outfit3-ph.png",
   },
+
   { // Outfit 4
-    top: { category: 'top', imageUrl: topImport[3] },
-    bottom: { category: 'bottom', imageUrl: bottomImport[0] },
-    cap: { category: 'cap', imageUrl: capImport[1] },
-    shoe: { category: 'shoe', imageUrl: shoeImport[2] },
+    top: topImport[3],
+    bottom: bottomImport[0],
+    cap: capImport[1],
+    shoe: shoeImport[2],
     outfitDisplay: "./assets/outfit/outfit4-ph.png",
   },
+  
   { // Outfit 5
-    top: { category: 'top', imageUrl: topImport[0] },
-    bottom: { category: 'bottom', imageUrl: bottomImport[2] },
-    cap: { category: 'cap', imageUrl: capImport[3] },
-    shoe: { category: 'shoe', imageUrl: shoeImport[1] },
+    top: topImport[0],
+    bottom: bottomImport[2],
+    cap: capImport[3],
+    shoe: shoeImport[1],
     outfitDisplay: "./assets/outfit/outfit5-ph.png",
   }
 ];

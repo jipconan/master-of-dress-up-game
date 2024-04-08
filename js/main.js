@@ -123,7 +123,7 @@ function initialize() {
     const intervalId = setInterval(function() {
 
         // Console log remaining time of timer
-        console.log(timerInstance.remainingTime);
+        //console.log(timerInstance.remainingTime);
         
         // If timer is 0, stop check for outfit match and game lose. 
         if (timerInstance.remainingTime === 0) {
@@ -206,29 +206,23 @@ function matchOutfit(winningOutfit) {
       return false;
     }
   
-    // Initialize catagory for outfit matching
-    const categories = ['top', 'bottom', 'cap', 'shoe'];
-
-    // Check if all categories are present in playerOutfit
-    const playerCategories = playerOutfit.map(item => item.category);
-
-    // Ensure that every required category is present in the player's outfit
-    // If any category is missing, return false
-    if (!categories.every(category => playerCategories.includes(category))) {
-      console.log("Not all categories are present in player outfit.");
-      return false;
-    }
+    // Initialize category for outfit matching
+    var categories = ['top', 'bottom', 'cap', 'shoe'];
   
     // Iterate over each category and check if it matches the winning outfit
     for (let category of categories) {
-      const playerItem = playerOutfit.find(item => item.category === category);
-      const winningItem = winningOutfit[category];
-  
-      // If the winningItem is not found or its imageUrl doesn't match, return false
-      if (!winningItem || playerItem.imageUrl !== winningItem.imageUrl || playerItem.category !== winningItem.category) {
-        console.log("Outfits do not match.");
-        return false;
-      }
+
+        // Find category on the specific item selected by player 
+        var playerItem = playerOutfit.find(item => item.category === category);
+
+        // Find category on the specific item chosen by winning outfit
+        var winningItem = winningOutfit[category];
+        
+        // If the winningItem is not found or its imageUrl doesn't match, return false
+        if (!(playerItem.tag === winningItem.tag)) {
+            console.log("Outfits do not match.");
+            return false;
+        }
     }
   
     // If all categories match, log success and return true
