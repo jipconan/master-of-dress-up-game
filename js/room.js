@@ -8,8 +8,6 @@ import { populateSlots } from './selection.js';
 /////////////////////// CREATE VARIABLES //////////////////////
 /////////////////////// CACHE DOM ELEMENTS ///////////////////////
 // Cache Dom elements
-const roomDom = document.getElementById('roomImage');
-const playerDom = document.getElementById('playerImage');
 const funitureDom = document.getElementById('funitureSelect');
 const wardrobeDom = document.getElementById('wardrobeImage');
 const tableDom = document.getElementById('tableImage');

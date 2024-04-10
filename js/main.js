@@ -21,19 +21,21 @@ const easyButton = document.getElementById('easyButton');
 const hardButton = document.getElementById('hardButton');
 const impossibleButton = document.getElementById('impossibleButton');
 const helpButton = document.getElementById('helpButton');
-const startButton = document.getElementById('startButton');
 const homeButton = document.getElementById('homeButton');
-const homeButton2 = document.getElementById('homeButton2');
+const homeButton2 = document.querySelectorAll('.home-button2');
 
 // Cache Popout elements
-const helpModal = document.getElementById('helpModal');
 const closeHelp = document.querySelector('.close');
 
 // Hide Elements
 document.querySelector('.game-screen').style.display = 'none'; 
 document.querySelector('.end-screen').style.display = 'none'; 
 document.querySelector('.win-screen').style.display = 'none'; 
+document.querySelector('.win2-screen').style.display = 'none'; 
+document.querySelector('.win3-screen').style.display = 'none'; 
 document.querySelector('.lose-screen').style.display = 'none'; 
+document.querySelector('.lose2-screen').style.display = 'none'; 
+document.querySelector('.lose3-screen').style.display = 'none'; 
 
 
 /////////////////////// CREATE EVENT LISTENERS ///////////////////////
@@ -41,31 +43,30 @@ document.querySelector('.lose-screen').style.display = 'none';
 // Easy Button Selection
 easyButton.addEventListener('click', function() {
     currentDifficultyClass = 'easy';
-    easyButton.classList.remove('selected');
-    hardButton.classList.remove('selected');
-    impossibleButton.classList.remove('selected');
-    easyButton.classList.add('selected');
-    enableStartButton();
+    if (currentDifficultyClass === '') {
+        return;
+    }
+    initialize();
 });
 
 // Hard Button Selection
 hardButton.addEventListener('click', function() {
+    resetGame();
     currentDifficultyClass = 'hard';
-    easyButton.classList.remove('selected');
-    hardButton.classList.remove('selected');
-    impossibleButton.classList.remove('selected');
-    hardButton.classList.add('selected');
-    enableStartButton();
+    if (currentDifficultyClass === '') {
+        return;
+    }
+    initialize();
 });
 
 // Impossible Button Selection
 impossibleButton.addEventListener('click', function() {
+    resetGame();
     currentDifficultyClass = 'impossible';
-    easyButton.classList.remove('selected');
-    hardButton.classList.remove('selected');
-    impossibleButton.classList.remove('selected');
-    impossibleButton.classList.add('selected');
-    enableStartButton();
+    if (currentDifficultyClass === '') {
+        return;
+    }
+    initialize();
 });
 
 // Help Button Selection
@@ -78,24 +79,17 @@ closeHelp.addEventListener('click', function() {
     helpMessage.style.display = 'none';
 });
 
-// Start Button Selection
-startButton.addEventListener("click", () => {
-    if (currentDifficultyClass === '') {
-        return;
-    }
-    initialize();
-});
-
 // Home Button Selection
 homeButton.addEventListener('click', function() {
     resetGame();
 });
 
 // Home Button 2 Selection
-homeButton2.addEventListener('click', function() {
-    resetGame();
-    hideEndScreen();
-
+homeButton2.forEach(homeButton2 => {
+    homeButton2.addEventListener('click', function() {
+        resetGame();
+        hideEndScreen();
+    });
 });
 
 /////////////////////// CREATE FUNCTIONS TO INVOKE ELEMENTS ///////////////////////
@@ -128,7 +122,17 @@ function initialize() {
         // If timer is 0, stop check for outfit match and game lose. 
         if (timerInstance.remainingTime === 0) {
             clearInterval(intervalId);
-            loseScreen();
+            if (currentDifficultyClass === 'easy') {
+                loseScreen();
+            } else if (currentDifficultyClass === 'hard') {
+
+                loseScreen2();
+            } else if (currentDifficultyClass === 'impossible') {
+
+                loseScreen3();
+            } else {
+                console.log('game error')
+            }
 
         } else {
 
@@ -137,35 +141,31 @@ function initialize() {
                 
                 // Stop check for outfit match and stop timer, game wins.
                 clearInterval(intervalId); 
-                winScreen();
                 stopTimer();
+                if (currentDifficultyClass === 'easy') {
+                    winScreen();
+                } else if (currentDifficultyClass === 'hard') {
+                    winScreen2();
+                } else if (currentDifficultyClass === 'impossible') {
+                    winScreen3();
+                } else {
+                    console.log('game error')
+                }
             }
         }       
     }, 1000);
 }
 
-
 // Function to reset game 
 function resetGame() {
+    hideEndScreen();
     resetTimer();
     resetPlayerAppearance();
     resetFurnitureSelect();
     clearSlots();
     resetButtons();
     hideGameScreen();
-    hideEndScreen();
     enableHomeScreen();
-}
-
-// Function to enable start button 
-function enableStartButton() {
-    if (currentDifficultyClass !== '') {
-        startButton.classList.add('enabled');
-        startButton.removeAttribute('disabled');
-    } else {
-        startButton.classList.remove('enabled');
-        startButton.setAttribute('disabled', 'disabled');
-    }
 }
 
 // Function to reset away highlighted buttons
@@ -173,23 +173,18 @@ function resetButtons () {
     difficultyButtons.forEach(button => {
         button.classList.remove('selected');
     });
-    startButton.classList.remove('enabled');
-    startButton.setAttribute('disabled', 'disabled');
     currentDifficultyClass = '';
 }
-
 
 // Function hide home screen
 function hideHomeScreen () {
     document.querySelector('.home-screen').style.display = 'none';
 }
 
-
 // Function hide game screen
 function hideGameScreen () {
     document.querySelector('.game-screen').style.display = 'none';
 }
-
 
 // Function unhide home screen
 function enableHomeScreen () {
@@ -233,15 +228,51 @@ function matchOutfit(winningOutfit) {
   function winScreen () {
     document.querySelector('.end-screen').style.display = 'block'; 
     document.querySelector('.win-screen').style.display = 'block';
+    document.querySelector('.win2-screen').style.display = 'none';
+    document.querySelector('.win3-screen').style.display = 'none';
+  }
+
+  function winScreen2 () {
+    document.querySelector('.end-screen').style.display = 'block'; 
+    document.querySelector('.win2-screen').style.display = 'block';
+    document.querySelector('.win3-screen').style.display = 'none';
+    document.querySelector('.win-screen').style.display = 'none';
+  }
+
+  function winScreen3 () {
+    document.querySelector('.end-screen').style.display = 'block'; 
+    document.querySelector('.win3-screen').style.display = 'block';
+    document.querySelector('.win-screen').style.display = 'none';
+    document.querySelector('.win2-screen').style.display = 'none';
   }
 
   function loseScreen () {
     document.querySelector('.end-screen').style.display = 'block'; 
     document.querySelector('.lose-screen').style.display = 'block';
+    document.querySelector('.lose2-screen').style.display = 'none';
+    document.querySelector('.lose3-screen').style.display = 'none';
+  }
+
+  function loseScreen2 () {
+    document.querySelector('.end-screen').style.display = 'block'; 
+    document.querySelector('.lose2-screen').style.display = 'block';
+    document.querySelector('.lose3-screen').style.display = 'none';
+    document.querySelector('.lose-screen').style.display = 'none';
+  }
+
+  function loseScreen3 () {
+    document.querySelector('.end-screen').style.display = 'block'; 
+    document.querySelector('.lose3-screen').style.display = 'block';
+    document.querySelector('.lose-screen').style.display = 'none';
+    document.querySelector('.lose2-screen').style.display = 'none';
   }
 
   function hideEndScreen () {
     document.querySelector('.end-screen').style.display = 'none'; 
-    document.querySelector('.win-screen').style.display = 'none'; 
+    document.querySelector('.win-screen').style.display = 'none';
+    document.querySelector('.win2-screen').style.display = 'none'; 
+    document.querySelector('.win3-screen').style.display = 'none';  
     document.querySelector('.lose-screen').style.display = 'none'; 
+    document.querySelector('.lose2-screen').style.display = 'none'; 
+    document.querySelector('.lose3-screen').style.display = 'none'; 
   }

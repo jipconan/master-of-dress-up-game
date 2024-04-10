@@ -5,7 +5,7 @@
 /////////////////////// CREATE VARIABLES ///////////////////////
 
 let playerOutfit = [];
-const slotsTotal = 4;
+const slotsTotal = 5;
 
 // Import image assets
 const topImport = [
@@ -26,10 +26,10 @@ const bottomImport = [
 
 const capImport = [
   { category: 'cap', tag: 'cap1', imageUrl: "./assets/caps/caps-black.png" },
-  { category: 'cap', tag: 'cap1', imageUrl: "./assets/caps/caps-white.png" },
-  { category: 'cap', tag: 'cap1', imageUrl: "./assets/caps/caps-blue.png" },
-  { category: 'cap', tag: 'cap1', imageUrl: "./assets/caps/caps-red.png"},
-  { category: 'cap', tag: 'cap1', imageUrl: "./assets/caps/caps-double.png"},
+  { category: 'cap', tag: 'cap2', imageUrl: "./assets/caps/caps-white.png" },
+  { category: 'cap', tag: 'cap3', imageUrl: "./assets/caps/caps-blue.png" },
+  { category: 'cap', tag: 'cap4', imageUrl: "./assets/caps/caps-red.png"},
+  { category: 'cap', tag: 'cap5', imageUrl: "./assets/caps/caps-double.png"},
 ];
 
 const shoeImport = [
@@ -40,34 +40,43 @@ const shoeImport = [
   { category: 'shoe', tag: 'shoe5', imageUrl: "./assets/shoes/shoes-brown.png"},
 ];
 
+// Merge all arrays into a single array
+const allClothes = [...topImport, ...bottomImport, ...capImport, ...shoeImport];
+
+// Function to shuffle array in place
+function shuffleArray(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
+}
+
+// Shuffle the combined array
+const shuffledClothes = shuffleArray(allClothes);
+
 // Define clothes data
-const wardrobeClothes = {
-  slot1: topImport[0],
-  slot2: bottomImport[0],  
-  slot3: capImport[0], 
-  slot4: shoeImport[0],
-};
+const wardrobeClothes = {};
+const tableClothes = {};
+const bedClothes = {};
+const shelfClothes = {};
 
-const tableClothes = {
-  slot1: topImport[1], 
-  slot2: bottomImport[1], 
-  slot3: capImport[1], 
-  slot4: shoeImport[1], 
-};
+// Generate slot properties for each furniture
+for (let i = 0; i < 5; i++) {
+  wardrobeClothes['slot' + (i + 1)] = shuffledClothes[i];
+}
 
-const bedClothes = {
-  slot1: topImport[2], 
-  slot2: bottomImport[2], 
-  slot3: capImport[2],
-  slot4: shoeImport[2],
-};
+for (let i = 0; i < 5; i++) {
+  tableClothes['slot' + (i + 1)] = shuffledClothes[i + 5];
+}
 
-const shelfClothes = {
-  slot1: topImport[3], 
-  slot2: bottomImport[3], 
-  slot3: capImport[3], 
-  slot4: shoeImport[3],
-};
+for (let i = 0; i < 5; i++) {
+  bedClothes['slot' + (i + 1)] = shuffledClothes[i + 10];
+}
+
+for (let i = 0; i < 5; i++) {
+  shelfClothes['slot' + (i + 1)] = shuffledClothes[i + 15];
+}
 
 /////////////////////// CREATE EVENT LISTENERS ///////////////////////
 /////////////////////// CREATE CONSTRUCTOR ///////////////////////
@@ -119,29 +128,24 @@ function populateSlots(selectedFurniture) {
 
     // Add event listener to handle selection
     img.addEventListener('click', function() {
-
       // Check if the clothing item is already in the playerOutfit array
-      const index = playerOutfit.findIndex(item => item.slot === slot);
-      
-      if (index === -1) {
-
-        // If not, add the new clothing item to the playerOutfit array
-        playerOutfit.push({ category, tag, imageUrl });
-
+      const existingIndex = playerOutfit.findIndex(item => item.category === category);
+  
+      if (existingIndex == -1) {
+          // If not, add the new clothing item to the playerOutfit array
+          playerOutfit.push({ category, tag, imageUrl });
       } else {
-
-        // If the same slot of clothing is already selected, replace it
-        playerOutfit[index] = { category, tag, imageUrl };
+          // If an item of the same category exists, replace it
+          playerOutfit[existingIndex] = { category, tag, imageUrl };
       }
-
+  
       // Update the player's appearance
       updatePlayerAppearance();
-
+  
       // Console log playerOutfit
       console.log("Updated playerOutfit:", playerOutfit);
-
     });
-
+  
     // Append the image to the corresponding slot
     const slotElement = document.getElementById(`slot${i}`);
     if (slotElement) {

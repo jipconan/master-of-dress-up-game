@@ -12,13 +12,11 @@
             
             <div id="gameTitle" class="game-title">Master of Dress Up Game</div>
             <div class="difficulty-buttons">
-                <div id="easyButton" class="button">EASY</div>
-                <div id="hardButton" class="button">HARD</div>
-                <div id="impossibleButton" class="button">IMPOSSIBLE</div>
+                <div id="easyButton">START</div>
             </div>
             <div class="menu-buttons">
-                <div id="helpButton" class="button">HELP</div>
-                <div id="startButton" class="button" disabled>START</div>
+                <div id="helpButton">HELP</div>
+
             </div>
 
             <div id="helpMessage" class="message">
@@ -49,6 +47,7 @@
                 <div id="slot2" class="slot"></div>
                 <div id="slot3" class="slot"></div>
                 <div id="slot4" class="slot"></div>
+                <div id="slot5" class="slot"></div>
                 <div id="timerDisplay" class="timer"></div>
                 <div id="homeButton" class="home-button">HOME</div>
             </div>
@@ -62,12 +61,33 @@
         <div class="win-screen">
             <div class="win-text">YOU WIN!</div>
             <div class="win-image"></div>
+            <div id="hardButton" class="button">NEXT</div>
+        </div>
+        <div class="win2-screen">
+            <div class="win-text">YOU WIN!</div>
+            <div class="win-image"></div>
+            <div id="impossibleButton" class="button">NEXT</div>
+        </div>
+        <div class="win3-screen">
+            <div class="win-text">YOU WIN!</div>
+            <div class="win-image"></div>
+            <div class="home-button2">HOME</div>
         </div>
         <div class="lose-screen">
             <div class="lose-text">LOSER!</div>
             <div class="lose-image"></div>
+            <div class="home-button2">HOME</div>
         </div>
-        <div id="homeButton2" class="home-button2">HOME</div>
+        <div class="lose2-screen">
+            <div class="lose-text">LOSER!</div>
+            <div class="lose-image"></div>
+            <div class="home-button2">HOME</div>
+        </div>
+        <div class="lose3-screen">
+            <div class="lose-text">LOSER!</div>
+            <div class="lose-image"></div>
+            <div class="home-button2">HOME</div>
+        </div>
     </div>
     <script src="js/main.js" type="module"></script>
     <script src="js/room.js" type="module"></script>

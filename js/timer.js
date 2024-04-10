@@ -94,8 +94,6 @@ function createTimer(difficulty) {
     // Determine the initial duration of the timer based on the selected difficulty
     let duration = difficultyTimes[difficulty];
 
-    resetTimer();
-
     // Set currentTimer to the new timer instance
     currentTimer = newTimer;
 
