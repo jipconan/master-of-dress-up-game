@@ -1,22 +1,12 @@
-//Implement logic for handling game state transitions 
-//Manage game initialization and setup.
-
-/////////////////////// IMPORT JS FILES ///////////////////////
-
 import { Room, resetFurnitureSelect } from './room.js';
 import { createTimer, resetTimer, stopTimer } from './timer.js';
 import { clearSlots, resetPlayerAppearance, playerOutfit } from './selection.js';
 import { selectRandomWinningOutfit, displayWinningOutfit } from './outfit.js';
 
-/////////////////////// CREATE VARIABLES ///////////////////////
-
 let currentDifficultyClass = '';
 let timerInstance = '';
 let winningOutfit = '';
 
-/////////////////////// CACHE DOM ELEMENTS ///////////////////////
-
-// Cache Buttons
 const difficultyButtons = document.querySelectorAll('.button');
 const easyButton = document.getElementById('easyButton');
 const hardButton = document.getElementById('hardButton');
@@ -26,10 +16,8 @@ const creditButton = document.getElementById('creditButton');
 const homeButton = document.getElementById('homeButton');
 const homeButton2 = document.querySelectorAll('.home-button2');
 
-// Cache Popout elements
 const closeHelp = document.querySelectorAll('.close');
 
-// Hide Elements
 document.querySelector('.game-screen').style.display = 'none'; 
 document.querySelector('.end-screen').style.display = 'none'; 
 
@@ -53,9 +41,6 @@ document.querySelector('.furniture-set').style.display = 'none';
 document.querySelector('.furniture2-set').style.display = 'none'; 
 document.querySelector('.furniture3-set').style.display = 'none'; 
 
-/////////////////////// CREATE EVENT LISTENERS ///////////////////////
-
-// Easy Button Selection
 easyButton.addEventListener('mouseover', function() {
     this.classList.add('highlighted');
 });
@@ -72,7 +57,6 @@ easyButton.addEventListener('click', function() {
     initialize();
 });
 
-// Hard Button Selection
 hardButton.addEventListener('click', function() {
     resetGame();
     currentDifficultyClass = 'hard';
@@ -82,7 +66,6 @@ hardButton.addEventListener('click', function() {
     initialize();
 });
 
-// Impossible Button Selection
 impossibleButton.addEventListener('click', function() {
     resetGame();
     currentDifficultyClass = 'impossible';
@@ -100,7 +83,6 @@ helpButton.addEventListener('mouseout', function() {
     this.classList.remove('highlighted');
 });
 
-// Help Button Selection
 helpButton.addEventListener('click', function() {
     helpMessage.style.display = 'block';
 });
@@ -113,12 +95,10 @@ creditButton.addEventListener('mouseout', function() {
     this.classList.remove('highlighted');
 });
 
-// Help Button Selection
 creditButton.addEventListener('click', function() {
     creditMessage.style.display = 'block';
 });
 
-// X Button (close) Selection
 closeHelp.forEach(homeButton2 => {
     homeButton2.addEventListener('click', function() {
         helpMessage.style.display = 'none';
@@ -126,12 +106,10 @@ closeHelp.forEach(homeButton2 => {
     });
 });
 
-// Home Button Selection
 homeButton.addEventListener('click', function() {
     resetGame();
 });
 
-// Home Button 2 Selection
 homeButton2.forEach(homeButton2 => {
     homeButton2.addEventListener('click', function() {
         resetGame();
@@ -139,43 +117,27 @@ homeButton2.forEach(homeButton2 => {
     });
 });
 
-/////////////////////// CREATE FUNCTIONS TO INVOKE ELEMENTS ///////////////////////
-
-// CREATE FUNCTIONS TO START GAME AND INVOKE OTHER ELEMENTS
-// Define timerInstance globally
-// Initialize function
 function initialize() {
     hideHomeScreen();
     createRoom();
 
-    // Get the randomly generated winning outfit
     winningOutfit = selectRandomWinningOutfit();
 
-    // Display the winning outfit image
     displayWinningOutfit(winningOutfit.outfitDisplay);
     
-    // Console log winningOutfit
     console.log("Winning Outfit:", winningOutfit);
 
-    // Create timer based on the current difficulty and store it in timerInstance
     timerInstance = createTimer(currentDifficultyClass);
 
-    // Check outfit match every second for a maximum of the remaining time from the timerInstance
     const intervalId = setInterval(function() {
 
-        // Console log remaining time of timer
-        //console.log(timerInstance.remainingTime);
-        
-        // If timer is 0, stop check for outfit match and game lose. 
         if (timerInstance.remainingTime === 0) {
             clearInterval(intervalId);
             if (currentDifficultyClass === 'easy') {
                 loseScreen();
             } else if (currentDifficultyClass === 'hard') {
-
                 loseScreen2();
             } else if (currentDifficultyClass === 'impossible') {
-
                 loseScreen3();
             } else {
                 console.log('game error')
@@ -183,10 +145,8 @@ function initialize() {
 
         } else {
 
-            // Else if outfit matches game wins.
             if (matchOutfit(winningOutfit)) {
                 
-                // Stop check for outfit match and stop timer, game wins.
                 clearInterval(intervalId); 
                 stopTimer();
                 if (currentDifficultyClass === 'easy') {
@@ -203,7 +163,6 @@ function initialize() {
     }, 1000);
 }
 
-// Generate Room function
 function createRoom () {
     const newRoom = new Room();
     if (currentDifficultyClass === 'easy') {
@@ -218,7 +177,6 @@ function createRoom () {
     newRoom.selectFurniture();
  };
 
-// Function to reset game 
 function resetGame() {
     hideEndScreen();
     resetTimer();
@@ -230,7 +188,6 @@ function resetGame() {
     enableHomeScreen();
 }
 
-// Function to reset away highlighted buttons
 function resetButtons () {
     difficultyButtons.forEach(button => {
         button.classList.remove('selected');
@@ -238,53 +195,39 @@ function resetButtons () {
     currentDifficultyClass = '';
 }
 
-// Function hide home screen
 function hideHomeScreen () {
     document.querySelector('.home-screen').style.display = 'none';
 }
 
-// Function hide game screen
 function hideGameScreen () {
     document.querySelector('.game-screen').style.display = 'none';
 }
 
-// Function unhide home screen
 function enableHomeScreen () {
     document.querySelector('.home-screen').style.display = 'flex';
 }
 
-// CREATE FUNCTIONS FOR WIN LOSE STATE
-// Function to match the player's outfit with the provided winning outfit
 function matchOutfit(winningOutfit) {
     
-    // Check if playerOutfit is empty
     if (playerOutfit.length === 0) {
       console.log("Player outfit is empty.");
       return false;
     }
-  
-    // Initialize category for outfit matching
+
     var categories = ['top', 'bottom', 'cap', 'shoe'];
   
-    // Iterate over each category and check if it matches the winning outfit
     for (let category of categories) {
 
-        // Find category on the specific item selected by player 
         var playerItem = playerOutfit.find(item => item.category === category);
 
-        // Find category on the specific item chosen by winning outfit
         var winningItem = winningOutfit[category];
 
-        // Add time to timer if selected correct clothes
-        
-        // If the winningItem is not found or its imageUrl doesn't match, return false
         if (!(playerItem.tag === winningItem.tag)) {
             console.log("Outfits do not match.");
             return false;
         }
     }
   
-    // If all categories match, log success and return true
     console.log("Outfits match");
     return true;
   }
