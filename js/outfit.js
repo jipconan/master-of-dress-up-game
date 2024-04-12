@@ -15,7 +15,7 @@ const winningOutfits = [
     bottom: bottomImport[1],
     cap: capImport[2],
     shoe: shoeImport[3],
-    outfitDisplay: "./assets/outfit/outfit1-ph.png",
+    outfitDisplay: "./assets/outfit/outfit1.png",
   },
 
   { // Outfit 2
@@ -23,7 +23,7 @@ const winningOutfits = [
     bottom: bottomImport[2],
     cap: capImport[3],
     shoe: shoeImport[0],
-    outfitDisplay: "./assets/outfit/outfit2-ph.png",
+    outfitDisplay: "./assets/outfit/outfit2.png",
   },
 
   { // Outfit 3
@@ -31,7 +31,7 @@ const winningOutfits = [
     bottom: bottomImport[3] ,
     cap: capImport[0],
     shoe: shoeImport[1],
-    outfitDisplay: "./assets/outfit/outfit3-ph.png",
+    outfitDisplay: "./assets/outfit/outfit3.png",
   },
 
   { // Outfit 4
@@ -39,7 +39,7 @@ const winningOutfits = [
     bottom: bottomImport[0],
     cap: capImport[1],
     shoe: shoeImport[2],
-    outfitDisplay: "./assets/outfit/outfit4-ph.png",
+    outfitDisplay: "./assets/outfit/outfit4.png",
   },
   
   { // Outfit 5
@@ -47,7 +47,7 @@ const winningOutfits = [
     bottom: bottomImport[2],
     cap: capImport[3],
     shoe: shoeImport[1],
-    outfitDisplay: "./assets/outfit/outfit5-ph.png",
+    outfitDisplay: "./assets/outfit/outfit5.png",
   }
 ];
 

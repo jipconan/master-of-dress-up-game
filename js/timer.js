@@ -8,7 +8,7 @@
 const difficultyTimes = {
     'easy': 30,
     'hard': 15,
-    'impossible': 8
+    'impossible': 15
 };
 
 // Set initial currentTimer

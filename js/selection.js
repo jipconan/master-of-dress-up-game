@@ -44,22 +44,6 @@ const shoeImport = [
   { category: 'shoe', tag: 'shoe5', imageUrl: "./assets/shoes/shoes-brown.png"},
 ];
 
-const trashImport = [
-  { category: 'shoe', tag: 'shoe1', imageUrl: "./assets/shoes/shoes-black.png" },
-  { category: 'shoe', tag: 'shoe2', imageUrl: "./assets/shoes/shoes-white.png" },
-  { category: 'shoe', tag: 'shoe3', imageUrl: "./assets/shoes/shoes-blue.png" },
-  { category: 'shoe', tag: 'shoe4', imageUrl: "./assets/shoes/shoes-red.png"},
-  { category: 'shoe', tag: 'shoe5', imageUrl: "./assets/shoes/shoes-brown.png"},
-];
-
-const rubbishImport = [
-  { category: 'shoe', tag: 'shoe1', imageUrl: "./assets/shoes/shoes-black.png" },
-  { category: 'shoe', tag: 'shoe2', imageUrl: "./assets/shoes/shoes-white.png" },
-  { category: 'shoe', tag: 'shoe3', imageUrl: "./assets/shoes/shoes-blue.png" },
-  { category: 'shoe', tag: 'shoe4', imageUrl: "./assets/shoes/shoes-red.png"},
-  { category: 'shoe', tag: 'shoe5', imageUrl: "./assets/shoes/shoes-brown.png"},
-];
-
 // Merge all arrays into a single array
 const allClothes = [...topImport, ...bottomImport, ...capImport, ...shoeImport];
 
@@ -77,7 +61,7 @@ const shuffledClothes = shuffleArray(allClothes);
 
 // Define clothes data
 const wardrobeClothes = {};
-const tableClothes = {};
+const basketClothes = {};
 const bedClothes = {};
 const shelfClothes = {};
 
@@ -87,7 +71,7 @@ for (let i = 0; i < 5; i++) {
 }
 
 for (let i = 0; i < 5; i++) {
-  tableClothes['slot' + (i + 1)] = shuffledClothes[i + 5];
+  basketClothes['slot' + (i + 1)] = shuffledClothes[i + 5];
 }
 
 for (let i = 0; i < 5; i++) {
@@ -103,7 +87,6 @@ for (let i = 0; i < 5; i++) {
 /////////////////////// CREATE FUNCTIONS TO INVOKE ELEMENTS ///////////////////////
 
 // Function to populate the slots with clothes based on the selected furniture
-// Function to populate the slots with clothes based on the selected furniture
 function populateSlots(selectedFurniture) {
   // Clear existing slots
   clearSlots();
@@ -115,8 +98,8 @@ function populateSlots(selectedFurniture) {
       case "wardrobe":
           clothes = wardrobeClothes;
           break;
-      case "table":
-          clothes = tableClothes;
+      case "basket":
+          clothes = basketClothes;
           break;
       case "bed":
           clothes = bedClothes;
@@ -286,7 +269,7 @@ export {
   capImport, 
   shoeImport, 
   wardrobeClothes, 
-  tableClothes, 
+  basketClothes, 
   bedClothes, 
   shelfClothes, 
   playerOutfit, 

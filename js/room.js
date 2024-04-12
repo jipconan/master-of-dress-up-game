@@ -10,7 +10,7 @@ import { populateSlots } from './selection.js';
 // Cache Dom elements
 const funitureDom = document.getElementById('funitureSelect');
 const wardrobeDom = document.getElementById('wardrobeImage');
-const tableDom = document.getElementById('tableImage');
+const basketDom = document.getElementById('basketImage');
 const shelfDom = document.getElementById('shelfImage');
 const bedDom = document.getElementById('bedImage');
 
@@ -51,26 +51,27 @@ class Room {
 
     selectFurniture () {
         wardrobeDom.addEventListener('click', function() {
-            tableDom.classList.remove('selected');
+            basketDom.classList.remove('selected');
             bedDom.classList.remove('selected');
             shelfDom.classList.remove('selected');
             wardrobeDom.classList.add('selected');
+
             populateSlots('wardrobe');
             funitureDom.textContent = 'WARDROBE';
         });
         
-        tableDom.addEventListener('click', function() {
+        basketDom.addEventListener('click', function() {
             wardrobeDom.classList.remove('selected');
             bedDom.classList.remove('selected');
             shelfDom.classList.remove('selected');
-            tableDom.classList.add('selected');
-            populateSlots('table');
-            funitureDom.textContent = 'TABLE';
+            basketDom.classList.add('selected');
+            populateSlots('basket');
+            funitureDom.textContent = 'BASKET';
         });
         
         bedDom.addEventListener('click', function() {
             wardrobeDom.classList.remove('selected');
-            tableDom.classList.remove('selected');
+            basketDom.classList.remove('selected');
             shelfDom.classList.remove('selected');
             bedDom.classList.add('selected');
             populateSlots('bed');
@@ -79,7 +80,7 @@ class Room {
         
         shelfDom.addEventListener('click', function() {
             wardrobeDom.classList.remove('selected');
-            tableDom.classList.remove('selected');
+            basketDom.classList.remove('selected');
             bedDom.classList.remove('selected');
             shelfDom.classList.add('selected');
             populateSlots('shelf');
@@ -95,7 +96,7 @@ class Room {
  function resetFurnitureSelect () {
     wardrobeDom.classList.remove('selected');
     bedDom.classList.remove('selected');
-    tableDom.classList.remove('selected');
+    basketDom.classList.remove('selected');
     shelfDom.classList.remove('selected');
     funitureDom.textContent = ''
 }

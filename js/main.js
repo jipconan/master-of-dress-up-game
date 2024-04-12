@@ -22,11 +22,12 @@ const easyButton = document.getElementById('easyButton');
 const hardButton = document.getElementById('hardButton');
 const impossibleButton = document.getElementById('impossibleButton');
 const helpButton = document.getElementById('helpButton');
+const creditButton = document.getElementById('creditButton');
 const homeButton = document.getElementById('homeButton');
 const homeButton2 = document.querySelectorAll('.home-button2');
 
 // Cache Popout elements
-const closeHelp = document.querySelector('.close');
+const closeHelp = document.querySelectorAll('.close');
 
 // Hide Elements
 document.querySelector('.game-screen').style.display = 'none'; 
@@ -45,6 +46,14 @@ document.querySelector('.room3-image').style.display = 'none';
 /////////////////////// CREATE EVENT LISTENERS ///////////////////////
 
 // Easy Button Selection
+easyButton.addEventListener('mouseover', function() {
+    this.classList.add('highlighted');
+});
+
+easyButton.addEventListener('mouseout', function() {
+    this.classList.remove('highlighted');
+});
+
 easyButton.addEventListener('click', function() {
     currentDifficultyClass = 'easy';
     if (currentDifficultyClass === '') {
@@ -73,14 +82,38 @@ impossibleButton.addEventListener('click', function() {
     initialize();
 });
 
+helpButton.addEventListener('mouseover', function() {
+    this.classList.add('highlighted');
+});
+
+helpButton.addEventListener('mouseout', function() {
+    this.classList.remove('highlighted');
+});
+
 // Help Button Selection
 helpButton.addEventListener('click', function() {
     helpMessage.style.display = 'block';
 });
 
+creditButton.addEventListener('mouseover', function() {
+    this.classList.add('highlighted');
+});
+
+creditButton.addEventListener('mouseout', function() {
+    this.classList.remove('highlighted');
+});
+
+// Help Button Selection
+creditButton.addEventListener('click', function() {
+    creditMessage.style.display = 'block';
+});
+
 // X Button (close) Selection
-closeHelp.addEventListener('click', function() {
-    helpMessage.style.display = 'none';
+closeHelp.forEach(homeButton2 => {
+    homeButton2.addEventListener('click', function() {
+        helpMessage.style.display = 'none';
+        creditMessage.style.display = 'none';;
+    });
 });
 
 // Home Button Selection
