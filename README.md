@@ -6,6 +6,9 @@ Master of Dress Up is a fun and engaging browser-based game where players get to
 In this game, players are challenged to match outfits to specific themes within a limited time frame.  
 With a variety of clothing options and themes to choose from, players must win the game to win the admiration of their friends.  
 
+## Game link
+https://jipconan.github.io/master-of-dress-up-game/
+
 ## Key Features:
 
 - Dress up your character with various clothing options.
