@@ -32,16 +32,25 @@ const closeHelp = document.querySelectorAll('.close');
 // Hide Elements
 document.querySelector('.game-screen').style.display = 'none'; 
 document.querySelector('.end-screen').style.display = 'none'; 
+
 document.querySelector('.win-screen').style.display = 'none'; 
 document.querySelector('.win2-screen').style.display = 'none'; 
 document.querySelector('.win3-screen').style.display = 'none'; 
+
 document.querySelector('.lose-screen').style.display = 'none'; 
 document.querySelector('.lose2-screen').style.display = 'none'; 
 document.querySelector('.lose3-screen').style.display = 'none'; 
+
 document.querySelector('.room-image').style.display = 'none'; 
 document.querySelector('.room2-image').style.display = 'none'; 
-document.querySelector('.room3-image').style.display = 'none'; 
+document.querySelector('.room3-image').style.display = 'none';
 
+document.getElementById('bubbleImage').style.display = 'none'; 
+document.getElementById('bubbleImage2').style.display = 'none'; 
+document.getElementById('bubbleImage3').style.display = 'none';
+
+document.querySelector('.furniture2-set').style.display = 'none'; 
+document.querySelector('.furniture3-set').style.display = 'none'; 
 
 /////////////////////// CREATE EVENT LISTENERS ///////////////////////
 

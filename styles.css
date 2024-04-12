@@ -210,7 +210,7 @@ body {
     width: auto;
     transform: scale(1.2);
     top: 550px;
-    left: 18px;
+    left: 19.5px;
     cursor: pointer;
 }
 
@@ -223,13 +223,87 @@ body {
     cursor: pointer;
 }
 
+#wardrobeImage2 {
+    left: auto;
+    width: auto;
+    transform: scale(8);
+    top: 500px;
+    left: 1600px;
+    cursor: pointer;
+}
+
+#basketImage2 {
+    left: auto;
+    width: auto;
+    transform: scale(4);
+    top: 580px;
+    left: 700px;
+    cursor: pointer;
+}
+
+#shelfImage2 {
+    left: auto;
+    width: auto;
+    transform: scale(10);
+    top: 400px;
+    left: 1100px;
+    cursor: pointer;
+}
+
+#bedImage2 {
+    left: auto;
+    width: auto;
+    transform: scale(8);
+    top: 700px;
+    left: 250px;
+    cursor: pointer;
+}
+
+#wardrobeImage3 {
+    left: auto;
+    width: auto;
+    transform: scale(1.2);
+    top: 75px;
+    left: 40px;
+    cursor: pointer;
+}
+
+#basketImage3 {
+    left: auto;
+    width: auto;
+    transform: scale(1.2);
+    top: 580px;
+    left: 550px;
+    cursor: pointer;
+}
+
+#shelfImage3 {
+    left: auto;
+    width: auto;
+    transform: scale(1.2);
+    top: 550px;
+    left: 18px;
+    cursor: pointer;
+}
+
+#bedImage3 {
+    left: auto;
+    width: auto;
+    transform: scale(1.2);
+    top: 550px;
+    left: 1426px;
+    cursor: pointer;
+}
+
 /* Lower bar container styles */
 .lowerBar-container {
+    position: absolute;
+    top: 934px;
+    left: -1.3px;
+    height: 10%;
+    width: 98%;
     display: flex;
     justify-content: space-between;
-    position: absolute;
-    bottom: 0;
-    width: 98%;
     padding: 20px;
     background-color: burlywood;
 }
@@ -244,6 +318,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    box-shadow: -3px 2px 8px 1px rgba(0, 0, 0, 0.5);
 }
 
 /* Furniture select styles */
@@ -260,6 +335,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    box-shadow: -3px 2px 8px 1px rgba(0, 0, 0, 0.5);
 }
 
 /* Timer styles */
@@ -298,6 +374,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    box-shadow: -3px 2px 8px 2px rgba(0, 0, 0, 0.5);
 }
 
 /* Player container styles */
@@ -346,6 +423,16 @@ body {
 
 #shoe {
     transform: translateX(50px) translateY(50px);
+}
+
+.bubble-image {
+    position: absolute;
+    top: 40px;
+    left: 1000px;
+    height: 500px;
+    width: 500px;
+    pointer-events: none;
+    z-index: 1000; 
 }
 
 /* /////////////////////// WIN LOSE STYLING /////////////////////// */
