@@ -11,7 +11,7 @@ import { topImport, bottomImport, capImport, shoeImport } from './selection.js';
 // Define winning outfit with my own determined outfit
 const winningOutfits = [
   { // Outfit 1
-    top: topImport[0],
+    top: topImport[1],
     bottom: bottomImport[1],
     cap: capImport[2],
     shoe: shoeImport[3],
