@@ -1,13 +1,5 @@
-// Implement logic for handling furniture selection.
-// Update the outfit slots based on the selected furniture.
-
-/////////////////////// IMPORT JS FILES ///////////////////////
-
 import { populateSlots } from './selection.js';
 
-/////////////////////// CREATE VARIABLES //////////////////////
-/////////////////////// CACHE DOM ELEMENTS ///////////////////////
-// Cache Dom elements
 const funitureDom = document.getElementById('funitureSelect');
 const wardrobeDom = document.getElementById('wardrobeImage');
 const basketDom = document.getElementById('basketImage');
@@ -21,10 +13,6 @@ const wardrobe3Dom = document.getElementById('wardrobeImage3');
 const basket3Dom = document.getElementById('basketImage3');
 const shelf3Dom = document.getElementById('shelfImage3');
 const bed3Dom = document.getElementById('bedImage3');
-
-
-/////////////////////// CREATE EVENT LISTENERS ///////////////////////
-/////////////////////// CREATE CONSTRUCTOR ///////////////////////
 
 class Room {
     constructor() {
@@ -197,9 +185,6 @@ class Room {
 
 }
 
-/////////////////////// CREATE FUNCTIONS TO INVOKE ELEMENTS ///////////////////////
-
- // Function to reset furniture selections
  function resetFurnitureSelect () {
     wardrobeDom.classList.remove('selected');
     bedDom.classList.remove('selected');
@@ -218,7 +203,5 @@ class Room {
 
     funitureDom.textContent = ''
 }
-
-/////////////////////// EXPORT ///////////////////////
 
 export { Room, resetFurnitureSelect };

@@ -1,10 +1,5 @@
-/* /////////////////////// IMPORT FONTS /////////////////////// */
-
 @import url('https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&display=swap');
 
-/* /////////////////////// CONTAINERS STYLING /////////////////////// */
-
-/* Body styles */
 body {
     position: absolute;
     width: 1920px;
@@ -19,7 +14,6 @@ body {
     border: 10px solid rgb(168, 128, 55);
 }
 
-/* Home and game screen styles */
 .home-screen, .game-screen {
     display: flex;
     flex-direction: column;
@@ -51,9 +45,6 @@ body {
     justify-content: center;
 }
 
-/* /////////////////////// HOME SCREEN STYLING /////////////////////// */
-
-/* Menu buttons container */
 .menu-buttons {
     display: flex;
     flex-direction: column;
@@ -75,7 +66,6 @@ body {
     justify-content: center;
 }
 
-/* Common button styles */
 .button {
     position: absolute;
     top: 85%;
@@ -93,12 +83,10 @@ body {
     align-items: center;
 }
 
-/* Selected button style */
 .button.selected {
     border: 12px solid yellow
 }
 
-/* Difficulty button styles */
 #easyButton {
     margin: 0px;
     letter-spacing: 3px;
@@ -112,14 +100,12 @@ body {
     color: white;
 }
 
-/* Help button styles */
 #helpButton, #creditButton {
     cursor: pointer;
     border: 12px solid transparent;
     color: white;
 }
 
-/* Message styles */
 .message {
     position: absolute;
     top: 50%;
@@ -152,9 +138,6 @@ body {
     cursor: pointer;
 }
 
-/* /////////////////////// GAME SCREEN STYLING /////////////////////// */
-
-/* Home button styles */
 .home-button {
     width: 20%;
     height: 100px;
@@ -170,23 +153,19 @@ body {
     align-items: center;
 }
 
-/* Furniture styles */
 .room-furniture {
     position: absolute;
 }
 
-/* Selected furniture style */
 .room-furniture.selected {
     background-color: rgba(255, 248, 155, 0.5);
     border: 5px solid yellow;
 }
 
-/* Game bar styles */
 .room-gamebar {
     position: relative;
 }
 
-/* Furniture images styles */
 #wardrobeImage {
     left: auto;
     width: auto;
@@ -295,7 +274,6 @@ body {
     cursor: pointer;
 }
 
-/* Lower bar container styles */
 .lowerBar-container {
     position: absolute;
     top: 934px;
@@ -308,7 +286,6 @@ body {
     background-color: burlywood;
 }
 
-/* Slot styles */
 .slot {
     width: 7%;
     height: 100px;
@@ -327,7 +304,6 @@ body {
     height: auto;
 }
 
-/* Furniture select styles */
 .funiture-select {
     width: 30%;
     height: 100px;
@@ -345,7 +321,6 @@ body {
     box-shadow: -3px 2px 8px 1px rgba(0, 0, 0, 0.5);
 }
 
-/* Timer styles */
 .timer {
     width: 20%;
     height: 100px;
@@ -362,7 +337,6 @@ body {
     align-items: center;
 }
 
-/* Outfit container styles */
 .outfit-container {
     position: absolute;
     top: 0px;
@@ -373,7 +347,6 @@ body {
     pointer-events: none;
 }
 
-/* Outfit image styles */
 .outfit-image {
     position: absolute;
     width: 100%;
@@ -384,7 +357,6 @@ body {
     box-shadow: -3px 2px 8px 2px rgba(0, 0, 0, 0.5);
 }
 
-/* Player container styles */
 .player-container {
     position: absolute;
     top: 58%;
@@ -393,7 +365,6 @@ body {
     pointer-events: none;
 }
 
-/* Room player styles */
 .room-player {
     position: relative;
     height: auto;
@@ -402,7 +373,6 @@ body {
     pointer-events: none;
 }
 
-/* Player outfit styles */
 .player-outfit {
     position: absolute;
     height: auto;
@@ -436,9 +406,6 @@ body {
     z-index: 1000; 
 }
 
-/* /////////////////////// WIN LOSE STYLING /////////////////////// */
-
-/* end-screen styles */
 .end-screen {
     position: absolute;
     top: 50%;
@@ -453,7 +420,6 @@ body {
     z-index: 9997; 
 }
 
-/* notouch-screen styles */
 .notouch-screen {
     position: absolute;
     top: 50%;
@@ -471,7 +437,6 @@ body {
     z-index: 9900; 
 }
 
-/* All win & lose screens styles */
 .win-screen, .win2-screen, .win3-screen, .lose-screen, .lose2-screen,.lose3-screen {
     position: absolute;
     top: 50%;
@@ -487,7 +452,6 @@ body {
     z-index: 9999; 
 }
 
-/* Win/Lose image styles */
 .win-images, .lose-images {
     height: 100%;
     width: 100%;
@@ -503,7 +467,6 @@ body {
     margin-right: 10px;
 }
 
-/* Win/Lose text styles */
 .win-text, .lose-text {
     position: absolute;
     top: 15%;
@@ -567,7 +530,6 @@ body {
     padding-left: 150px;
 }
 
-/* Home button 2 styles */
 .home-button2 {
     position: absolute;
     top: 90%;
