@@ -41,14 +41,15 @@ document.querySelector('.lose-screen').style.display = 'none';
 document.querySelector('.lose2-screen').style.display = 'none'; 
 document.querySelector('.lose3-screen').style.display = 'none'; 
 
-document.querySelector('.room-image').style.display = 'none'; 
-document.querySelector('.room2-image').style.display = 'none'; 
-document.querySelector('.room3-image').style.display = 'none';
+document.getElementById('roomImage').style.display = 'none'; 
+document.getElementById('roomImage2').style.display = 'none'; 
+document.getElementById('roomImage3').style.display = 'none';
 
 document.getElementById('bubbleImage').style.display = 'none'; 
 document.getElementById('bubbleImage2').style.display = 'none'; 
 document.getElementById('bubbleImage3').style.display = 'none';
 
+document.querySelector('.furniture-set').style.display = 'none'; 
 document.querySelector('.furniture2-set').style.display = 'none'; 
 document.querySelector('.furniture3-set').style.display = 'none'; 
 

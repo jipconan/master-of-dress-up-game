@@ -226,8 +226,8 @@ body {
 #wardrobeImage2 {
     left: auto;
     width: auto;
-    transform: scale(8);
-    top: 500px;
+    transform: scale(1.2);
+    top: 88px;
     left: 1600px;
     cursor: pointer;
 }
@@ -235,27 +235,27 @@ body {
 #basketImage2 {
     left: auto;
     width: auto;
-    transform: scale(4);
-    top: 580px;
-    left: 700px;
+    transform: scale(1.2);
+    top: 640px;
+    left: 525px;
     cursor: pointer;
 }
 
 #shelfImage2 {
     left: auto;
     width: auto;
-    transform: scale(10);
-    top: 400px;
-    left: 1100px;
+    transform: scale(1.2);
+    top: 64px;
+    left: 1030px;
     cursor: pointer;
 }
 
 #bedImage2 {
     left: auto;
     width: auto;
-    transform: scale(8);
-    top: 700px;
-    left: 250px;
+    transform: scale(1.2);
+    top: 370px;
+    left: 42px;
     cursor: pointer;
 }
 
@@ -264,7 +264,7 @@ body {
     width: auto;
     transform: scale(1.2);
     top: 75px;
-    left: 40px;
+    left: 32px;
     cursor: pointer;
 }
 
@@ -273,7 +273,7 @@ body {
     width: auto;
     transform: scale(1.2);
     top: 580px;
-    left: 550px;
+    left: 435px;
     cursor: pointer;
 }
 
@@ -281,8 +281,8 @@ body {
     left: auto;
     width: auto;
     transform: scale(1.2);
-    top: 550px;
-    left: 18px;
+    top: 450px;
+    left: 780px;
     cursor: pointer;
 }
 
@@ -290,8 +290,8 @@ body {
     left: auto;
     width: auto;
     transform: scale(1.2);
-    top: 550px;
-    left: 1426px;
+    top: 590px;
+    left: 1256px;
     cursor: pointer;
 }
 
@@ -312,13 +312,19 @@ body {
 .slot {
     width: 7%;
     height: 100px;
-    background-color: #fff;
+    background-color: lightgray;
     margin-inline: 10px;
     cursor: pointer;
     display: flex;
     justify-content: center;
     align-items: center;
     box-shadow: -3px 2px 8px 1px rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+}
+
+.slot img {
+    max-width: 80px;
+    height: auto;
 }
 
 /* Furniture select styles */
@@ -329,6 +335,7 @@ body {
     margin-right: 100px;
     background-color: lightgray;
     letter-spacing: 3px;
+    border-radius: 50%;
     font-family: "Gloria Hallelujah", cursive;
     font-size: 3em;
     pointer-events: none;
@@ -380,49 +387,43 @@ body {
 /* Player container styles */
 .player-container {
     position: absolute;
-    top: 55%;
+    top: 58%;
     left: 50%;
-    transform: translate(-50%, -50%);
-    height: 500px;
-    width: 500px;
+    transform: translate(-50%, -50%) scale(0.5);
     pointer-events: none;
 }
 
 /* Room player styles */
 .room-player {
-    position: absolute;
-    width: 100%;
+    position: relative;
+    height: auto;
+    width: auto;
+
     pointer-events: none;
 }
 
 /* Player outfit styles */
 .player-outfit {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    top: 0px;
-    left: 150px;
-    height: 100px;
-    width: 100px;
-    border: 5px solid black;
+    position: absolute;
+    height: auto;
+    width: auto;
     pointer-events: none;
 }
 
 #cap {
-    transform: translateX(50px) translateY(50px);
+    transform: translateX(-10px) translateY(-850px);
 }
 
 #top {
-    transform: translateX(50px) translateY(50px);
+    transform: translateX(20px) translateY(-300px);
 }
 
 #bottom {
-    transform: translateX(50px) translateY(50px);
+    transform: translateX(60px) translateY(-160px);
 }
 
 #shoe {
-    transform: translateX(50px) translateY(50px);
+    transform: translateX(62px) translateY(-60px);
 }
 
 .bubble-image {
