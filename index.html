@@ -9,15 +9,14 @@
 <body>
     <div class="container">
         <div class="home-screen">
+            <img class= "home-image" src="./assets/homescreen/home-screen-image.png" alt="home-image">
             <div class="menu-buttons">
                 <img class="logo-image" src="./assets/homescreen/logo-image.png" alt="gamelogo">
             </div>
-            <div class="difficulty-buttons">
-                <div id="easyButton">START</div>
-            </div>
             <div class="menu-buttons">
-                <div id="helpButton">HELP</div>
-
+                <div id="easyButton" class="menu-button">START</div>
+                <div id="helpButton" class="menu-button">HELP</div>
+                <div id="creditButton" class="menu-button">CREDIT</div>
             </div>
 
             <div id="helpMessage" class="message">
@@ -26,19 +25,26 @@
                   <img src="./assets/homescreen/instruction-message.png" alt="Instructions">
                 </div>
             </div>
+
+            <div id="creditMessage" class="message">
+                <div class="credit-window">
+                  <span class="close">&times;</span>
+                  <img src="./assets/homescreen/credit-message.png" alt="Credit">
+                </div>
+            </div>
             
         </div> 
         <div class="game-screen">
             
-            <img id="roomImage" class="room-image" src="./assets/room/room-ph.jpg" alt="Room Image">
+            <img id="roomImage" class="room-image" src="./assets/room/room1-background.png" alt="Room Image">
             <img id="roomImage2" class="room2-image" src="./assets/room/room2-ph.jpg" alt="Room Image">
             <img id="roomImage3" class="room3-image" src="./assets/room/room3-ph.jpg" alt="Room Image">
-            <img id="wardrobeImage" class="room-furniture" src="./assets/room/wardrobe-ph.png" alt="Wardrobe Image">
-            <img id="tableImage" class="room-furniture" src="./assets/room/table-ph.png" alt="Table Image">
-            <img id="shelfImage" class="room-furniture" src="./assets/room/shelf-ph.png" alt="Shelf Image">
-            <img id="bedImage" class="room-furniture" src="./assets/room/bed-ph.png" alt="Bed Image">
+            <img id="wardrobeImage" class="room-furniture" src="./assets/room/room1-wardrobe.png" alt="Wardrobe Image">
+            <img id="basketImage" class="room-furniture" src="./assets/room/room1-basket.png" alt="Basket Image">
+            <img id="shelfImage" class="room-furniture" src="./assets/room/room1-shelf.png" alt="Shelf Image">
+            <img id="bedImage" class="room-furniture" src="./assets/room/room1-bed.png" alt="Bed Image">
             <div class="player-container">
-                <img id="playerImage" class="room-player" src="./assets/characters/player-ph.png" alt="Player Image">
+                <img class="room-player" src="./assets/characters/player-ph.png" alt="Player Image">
                 <div id="cap" class="player-outfit"></div>
                 <div id="top" class="player-outfit"></div>
                 <div id="bottom" class="player-outfit"></div>
@@ -63,32 +69,77 @@
         <div class="notouch-screen"></div>
         <div class="win-screen">
             <div class="win-text">YOU WIN!</div>
-            <div class="win-image"></div>
+            <div class="win-images">
+                <img src="./assets/winscreen/jumping-cat.gif" alt="cryingcat GIF">
+                <div class="you-text">"you"</div>
+                <div class="friends">
+                    <img src="./assets/winscreen/mindblown-cat.gif" alt="laughingcat2 GIF">
+                    <img src="./assets/winscreen/shocked-cat.gif" alt="laughingcat GIF">
+                </div>
+                <div class="lose2-text">BROOOO!! wats with that drip bro!</div>
+            </div>
             <div id="hardButton" class="button">NEXT</div>
         </div>
         <div class="win2-screen">
             <div class="win-text">YOU WIN!</div>
-            <div class="win-image"></div>
+            <div class="win-images">
+                <img src="./assets/winscreen/bathing-cat.gif" alt="cryingcat GIF">
+                <div class="you-text">"you"</div>
+                <div class="friends">
+                    <img src="./assets/winscreen/love-cat.gif" alt="laughingcat2 GIF">
+                    <img src="./assets/winscreen/love2-cat.gif" alt="laughingcat GIF">
+                </div>
+                <div class="lose2-text">SIR!! u looking fine..</div>
+            </div>
             <div id="impossibleButton" class="button">NEXT</div>
         </div>
         <div class="win3-screen">
             <div class="win-text">YOU WIN!</div>
-            <div class="win-image"></div>
+            <div class="win-images">
+                <img src="./assets/winscreen/dancing-cat.gif" alt="cryingcat GIF">
+                <div class="you2-text">"you"</div>
+                <div class="friends">
+                    <img src="./assets/winscreen/partner-cat.gif" alt="laughingcat GIF">
+                </div>
+                <div class="lose2-text">my partner looks so hot omg &gt;.&lt;</div>
+            </div>
             <div class="home-button2">HOME</div>
         </div>
         <div class="lose-screen">
-            <div class="lose-text">LOSER!</div>
-            <div class="lose-image"></div>
+            <div class="lose-text">YOU LOSE!</div>
+            <div class="lose-images">
+                <img src="./assets/losescreen/banana-cat-crying.gif" alt="cryingcat GIF">
+                <div class="you-text">"you"</div>
+                <div class="friends">
+                    <img src="./assets/losescreen/laughing-cat2.gif" alt="laughingcat2 GIF">
+                    <img src="./assets/losescreen/laughing-cat.gif" alt="laughingcat GIF">
+                </div>
+                <div class="lose2-text">U DRESS UGLYY HAHAHA</div>
+            </div>
             <div class="home-button2">HOME</div>
         </div>
         <div class="lose2-screen">
-            <div class="lose-text">LOSER!</div>
-            <div class="lose-image"></div>
+            <div class="lose-text">YOU LOSE!</div>
+            <div class="lose-images">
+                <img src="./assets/losescreen/banana-cat-crying.gif" alt="cryingcat GIF">
+                <div class="you-text">"you"</div>
+                <div class="friends">
+                    <img src="./assets/losescreen/disgust-cat.gif" alt="laughingcat2 GIF">
+                    <img src="./assets/losescreen/disgust-cat2.gif" alt="laughingcat GIF">
+                </div>
+                <div class="lose2-text">NOOOOO.. Y U DRESSING LIKE DAT??</div>
+            </div>
             <div class="home-button2">HOME</div>
         </div>
         <div class="lose3-screen">
-            <div class="lose-text">LOSER!</div>
-            <div class="lose-image"></div>
+            <div class="lose-text">YOU LOSE!</div>
+            <div class="lose-images">
+                <img src="./assets/losescreen/banana-cat-crying.gif" alt="cryingcat GIF">
+                <div class="you2-text">"you"</div>
+                <div class="friends">
+                    <img src="./assets/losescreen/annoyed-cat_ribbon.gif" alt="laughingcat2 GIF">
+                <div class="lose2-text">"super angry mood"</div>
+            </div>
             <div class="home-button2">HOME</div>
         </div>
     </div>
