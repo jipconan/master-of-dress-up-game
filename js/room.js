@@ -24,6 +24,29 @@ class Room {
 
     generateRoom () {
         document.querySelector('.game-screen').style.display = 'block'; 
+        document.querySelector('.room-image').style.display = 'block'; 
+        document.querySelector('.room2-image').style.display = 'none'; 
+        document.querySelector('.room3-image').style.display = 'none'; 
+    }
+
+    generateRoom2 () {
+        document.querySelector('.game-screen').style.display = 'block'; 
+        document.querySelector('.room2-image').style.display = 'block';
+        document.querySelector('.room3-image').style.display = 'none'; 
+        document.querySelector('.room-image').style.display = 'none';  
+    }
+
+    generateRoom3 () {
+        document.querySelector('.game-screen').style.display = 'block'; 
+        document.querySelector('.room3-image').style.display = 'block'; 
+        document.querySelector('.room-image').style.display = 'none'; 
+        document.querySelector('.room2-image').style.display = 'none'; 
+    }
+
+    resetRoom () {
+        document.querySelector('.room-image').style.display = 'none'; 
+        document.querySelector('.room2-image').style.display = 'none'; 
+        document.querySelector('.room3-image').style.display = 'none'; 
     }
 
     selectFurniture () {
@@ -63,16 +86,10 @@ class Room {
             funitureDom.textContent = 'SHELF';
         });
     }
+
 }
 
 /////////////////////// CREATE FUNCTIONS TO INVOKE ELEMENTS ///////////////////////
-
-// Generate Room function
-function createRoom () {
-    const newRoom = new Room()
-    newRoom.generateRoom()
-    newRoom.selectFurniture()
- }
 
  // Function to reset furniture selections
  function resetFurnitureSelect () {
@@ -85,4 +102,4 @@ function createRoom () {
 
 /////////////////////// EXPORT ///////////////////////
 
-export { createRoom, resetFurnitureSelect };
+export { Room, resetFurnitureSelect };

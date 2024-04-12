@@ -3,7 +3,7 @@
 
 /////////////////////// IMPORT JS FILES ///////////////////////
 
-import { createRoom, resetFurnitureSelect } from './room.js';
+import { Room, resetFurnitureSelect } from './room.js';
 import { createTimer, resetTimer, stopTimer } from './timer.js';
 import { clearSlots, resetPlayerAppearance, playerOutfit } from './selection.js';
 import { selectRandomWinningOutfit, displayWinningOutfit } from './outfit.js';
@@ -12,6 +12,7 @@ import { selectRandomWinningOutfit, displayWinningOutfit } from './outfit.js';
 
 let currentDifficultyClass = '';
 let timerInstance = '';
+let winningOutfit = '';
 
 /////////////////////// CACHE DOM ELEMENTS ///////////////////////
 
@@ -36,6 +37,9 @@ document.querySelector('.win3-screen').style.display = 'none';
 document.querySelector('.lose-screen').style.display = 'none'; 
 document.querySelector('.lose2-screen').style.display = 'none'; 
 document.querySelector('.lose3-screen').style.display = 'none'; 
+document.querySelector('.room-image').style.display = 'none'; 
+document.querySelector('.room2-image').style.display = 'none'; 
+document.querySelector('.room3-image').style.display = 'none'; 
 
 
 /////////////////////// CREATE EVENT LISTENERS ///////////////////////
@@ -102,7 +106,7 @@ function initialize() {
     createRoom();
 
     // Get the randomly generated winning outfit
-    const winningOutfit = selectRandomWinningOutfit();
+    winningOutfit = selectRandomWinningOutfit();
 
     // Display the winning outfit image
     displayWinningOutfit(winningOutfit.outfitDisplay);
@@ -112,7 +116,7 @@ function initialize() {
 
     // Create timer based on the current difficulty and store it in timerInstance
     timerInstance = createTimer(currentDifficultyClass);
-    
+
     // Check outfit match every second for a maximum of the remaining time from the timerInstance
     const intervalId = setInterval(function() {
 
@@ -156,6 +160,21 @@ function initialize() {
     }, 1000);
 }
 
+// Generate Room function
+function createRoom () {
+    const newRoom = new Room();
+    if (currentDifficultyClass === 'easy') {
+        newRoom.generateRoom();
+    } else if (currentDifficultyClass === 'hard') {
+        newRoom.generateRoom2();
+    } else if (currentDifficultyClass === 'impossible') {
+        newRoom.generateRoom3();
+    } else {
+        console.log(`room error`)
+    }
+    newRoom.selectFurniture();
+ };
+
 // Function to reset game 
 function resetGame() {
     hideEndScreen();
@@ -188,7 +207,7 @@ function hideGameScreen () {
 
 // Function unhide home screen
 function enableHomeScreen () {
-    document.querySelector('.home-screen').style.display = 'block';
+    document.querySelector('.home-screen').style.display = 'flex';
 }
 
 // CREATE FUNCTIONS FOR WIN LOSE STATE
@@ -212,6 +231,8 @@ function matchOutfit(winningOutfit) {
 
         // Find category on the specific item chosen by winning outfit
         var winningItem = winningOutfit[category];
+
+        // Add time to timer if selected correct clothes
         
         // If the winningItem is not found or its imageUrl doesn't match, return false
         if (!(playerItem.tag === winningItem.tag)) {
@@ -276,3 +297,5 @@ function matchOutfit(winningOutfit) {
     document.querySelector('.lose2-screen').style.display = 'none'; 
     document.querySelector('.lose3-screen').style.display = 'none'; 
   }
+
+  export { timerInstance, winningOutfit };

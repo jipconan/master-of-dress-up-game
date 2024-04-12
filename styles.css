@@ -2,18 +2,35 @@
 
 /* Body styles */
 body {
-    max-width: 1920px;
-    max-height: 1080px;
+    position: absolute;
+    width: 1920px;
+    height: 1080px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     overflow: hidden;
-    background-color: burlywood;
+    background-color: darkgray;
+    margin: 0;
+    padding: 0;
+    border: 10px solid rgb(168, 128, 55);
 }
 
 /* Home and game screen styles */
 .home-screen, .game-screen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    width: 1920px;
+    height: 1080px;
+    background-color: orange;
+}
+
+.logo-image {
+    position: relative;
+    width: 618px;
+    height: 348px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -60,18 +77,6 @@ body {
 /* Selected button style */
 .button.selected {
     border: 12px solid yellow
-}
-
-/* Game title styles */
-#gameTitle {
-    font-size: 60px;
-    letter-spacing: 3px;
-    font-weight: bold;
-    margin: 10px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
 }
 
 /* Difficulty button styles */

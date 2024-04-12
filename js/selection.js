@@ -2,6 +2,10 @@
 // Handle interactions with outfit items (top, bottom, cap, shoes).
 // Update the player's outfit based on the selected clothes.
 
+/////////////////////// IMPORT JS FILES ////////////////////////
+
+import { timerInstance, winningOutfit } from "./main.js";
+
 /////////////////////// CREATE VARIABLES ///////////////////////
 
 let playerOutfit = [];
@@ -33,6 +37,22 @@ const capImport = [
 ];
 
 const shoeImport = [
+  { category: 'shoe', tag: 'shoe1', imageUrl: "./assets/shoes/shoes-black.png" },
+  { category: 'shoe', tag: 'shoe2', imageUrl: "./assets/shoes/shoes-white.png" },
+  { category: 'shoe', tag: 'shoe3', imageUrl: "./assets/shoes/shoes-blue.png" },
+  { category: 'shoe', tag: 'shoe4', imageUrl: "./assets/shoes/shoes-red.png"},
+  { category: 'shoe', tag: 'shoe5', imageUrl: "./assets/shoes/shoes-brown.png"},
+];
+
+const trashImport = [
+  { category: 'shoe', tag: 'shoe1', imageUrl: "./assets/shoes/shoes-black.png" },
+  { category: 'shoe', tag: 'shoe2', imageUrl: "./assets/shoes/shoes-white.png" },
+  { category: 'shoe', tag: 'shoe3', imageUrl: "./assets/shoes/shoes-blue.png" },
+  { category: 'shoe', tag: 'shoe4', imageUrl: "./assets/shoes/shoes-red.png"},
+  { category: 'shoe', tag: 'shoe5', imageUrl: "./assets/shoes/shoes-brown.png"},
+];
+
+const rubbishImport = [
   { category: 'shoe', tag: 'shoe1', imageUrl: "./assets/shoes/shoes-black.png" },
   { category: 'shoe', tag: 'shoe2', imageUrl: "./assets/shoes/shoes-white.png" },
   { category: 'shoe', tag: 'shoe3', imageUrl: "./assets/shoes/shoes-blue.png" },
@@ -83,7 +103,7 @@ for (let i = 0; i < 5; i++) {
 /////////////////////// CREATE FUNCTIONS TO INVOKE ELEMENTS ///////////////////////
 
 // Function to populate the slots with clothes based on the selected furniture
-// playerOutfit array is unsorted order but will be used for updatePlayerOutfit later
+// Function to populate the slots with clothes based on the selected furniture
 function populateSlots(selectedFurniture) {
   // Clear existing slots
   clearSlots();
@@ -92,66 +112,98 @@ function populateSlots(selectedFurniture) {
 
   // Determine the clothes based on the selected furniture
   switch (selectedFurniture) {
-    case "wardrobe":
-      clothes = wardrobeClothes;
-      break;
-    case "table":
-      clothes = tableClothes;
-      break;
-    case "bed":
-      clothes = bedClothes;
-      break;
-    case "shelf":
-      clothes = shelfClothes;
-      break;
-    default:
-      console.log("Invalid furniture selected");
-      return;
+      case "wardrobe":
+          clothes = wardrobeClothes;
+          break;
+      case "table":
+          clothes = tableClothes;
+          break;
+      case "bed":
+          clothes = bedClothes;
+          break;
+      case "shelf":
+          clothes = shelfClothes;
+          break;
+      default:
+          console.log("Invalid furniture selected");
+          return;
   }
 
   // Iterate over the selected furniture's clothes slots
-  for (let i = 1; i <= slotsTotal; i++) { 
-    const slot = `slot${i}`;
-    const imageUrl = clothes[slot].imageUrl;
-    const category = clothes[slot].category;
-    const tag = clothes[slot].tag;
+  for (let i = 1; i <= slotsTotal; i++) {
+      const slot = `slot${i}`;
+      const imageUrl = clothes[slot].imageUrl;
+      const category = clothes[slot].category;
+      const tag = clothes[slot].tag;
 
-    // Create image element for the clothing item
-    const img = document.createElement('img');
+      // Create image element for the clothing item
+      const img = document.createElement('img');
 
-    // Set src attribute
-    Object.assign(img, { 
-      src: imageUrl, 
-      alt: slot,
-      className: 'clothing-item',
-    });
+      // Set src attribute
+      Object.assign(img, {
+          src: imageUrl,
+          alt: slot,
+          className: 'clothing-item',
+      });
 
-    // Add event listener to handle selection
-    img.addEventListener('click', function() {
-      // Check if the clothing item is already in the playerOutfit array
-      const existingIndex = playerOutfit.findIndex(item => item.category === category);
-  
-      if (existingIndex == -1) {
-          // If not, add the new clothing item to the playerOutfit array
-          playerOutfit.push({ category, tag, imageUrl });
-      } else {
-          // If an item of the same category exists, replace it
-          playerOutfit[existingIndex] = { category, tag, imageUrl };
+      // Add event listener to handle selection
+      img.addEventListener('click', function () {
+          // Check if the clothing item is already in the playerOutfit array
+          const existingIndex = playerOutfit.findIndex(item => item.category === category);
+
+          // Check if the selected clothing item matches the winning outfit
+          const matchOutfit = isMatchingOutfit({ category, tag });
+
+          // If selected clothes match the winning outfit, add 3 seconds to the timer and push it into playerOutfit
+          if (matchOutfit) {
+              if (existingIndex !== -1) {
+                  // If an item of the same category exists, replace it with the new correct item
+                  playerOutfit[existingIndex] = { category, tag, imageUrl };
+              } else {
+                  // If not, add the new clothing item to the playerOutfit array
+                  playerOutfit.push({ category, tag, imageUrl });
+              }
+              // add 3 seconds to the timer
+              timerInstance.remainingTime += 2;
+              timerInstance.updateTimerDisplay();
+          } else {
+              // If the selected clothing item does not match the winning outfit, handle as before
+              if (existingIndex === -1) {
+                  // If not, add the new clothing item to the playerOutfit array
+                  playerOutfit.push({ category, tag, imageUrl });
+              } else {
+                  // If an item of the same category exists, replace it
+                  playerOutfit[existingIndex] = { category, tag, imageUrl };
+              }
+          }
+
+          // Update the player's appearance
+          updatePlayerAppearance();
+
+          // Console log playerOutfit
+          console.log("Updated playerOutfit:", playerOutfit);
+      });
+
+      // Append the image to the corresponding slot
+      const slotElement = document.getElementById(`slot${i}`);
+      if (slotElement) {
+          slotElement.appendChild(img);
       }
-  
-      // Update the player's appearance
-      updatePlayerAppearance();
-  
-      // Console log playerOutfit
-      console.log("Updated playerOutfit:", playerOutfit);
-    });
-  
-    // Append the image to the corresponding slot
-    const slotElement = document.getElementById(`slot${i}`);
-    if (slotElement) {
-      slotElement.appendChild(img);
-    }
   }
+}
+
+// Function to check if the selected clothing item matches the winning outfit
+function isMatchingOutfit(selectedClothing) {
+  // Iterate over the winning outfit to check for a match
+  for (const key in winningOutfit) {
+      if (winningOutfit.hasOwnProperty(key)) {
+          if (winningOutfit[key].tag === selectedClothing.tag) {
+              // Match found
+              return true;
+          }
+      }
+  }
+  return false; // No match found
 }
 
 // Function to clear the content of all slots
