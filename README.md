@@ -26,7 +26,7 @@ With a variety of clothing options and themes to choose from, players must win t
 ![GAMEPLAY SCREENSHOT 1](./assets/screenshots/screenshot1-homescreen.png)
 ![GAMEPLAY SCREENSHOT 2](./assets/screenshots/screenshot2-howtoplay.png)
 ![GAMEPLAY SCREENSHOT 3](./assets/screenshots/screenshot3-gameplay.png)
-![GAMEPLAY SCREENSHOT 4](./assets/screenshots/screenshot4-stagewin.png)
+![GAMEPLAY SCREENSHOT 4](./assets/screenshots/screenshot3-stagewin.png)
 
 ## Technologies Used:
 
