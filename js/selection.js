@@ -93,46 +93,49 @@ function populateSlots(selectedFurniture) {
   }
 
   for (let i = 1; i <= slotsTotal; i++) {
-      const slot = `slot${i}`;
-      const imageUrl = clothes[slot].imageUrl;
-      const category = clothes[slot].category;
-      const tag = clothes[slot].tag;
+    const slot = `slot${i}`;
+    const imageUrl = clothes[slot].imageUrl;
+    const category = clothes[slot].category;
+    const tag = clothes[slot].tag;
 
-      const img = document.createElement('img');
-      Object.assign(img, {
-          src: imageUrl,
-          alt: slot,
-          className: 'clothing-item',
-      });
+    const img = document.createElement('img');
+    Object.assign(img, {
+      src: imageUrl,
+      alt: slot,
+      className: 'clothing-item',
+    });
 
-      img.addEventListener('click', function () {
-          const existingIndex = playerOutfit.findIndex(item => item.category === category);
-          const matchOutfit = isMatchingOutfit({ category, tag });
-          if (matchOutfit) {
-              if (existingIndex !== -1) {
-                  playerOutfit[existingIndex] = { category, tag, imageUrl };
-              } else {
-                  playerOutfit.push({ category, tag, imageUrl });
-              }
-              timerInstance.remainingTime += 2;
-              timerInstance.updateTimerDisplay();
-          } else {
-              if (existingIndex === -1) {
-                  playerOutfit.push({ category, tag, imageUrl });
-              } else {
-                  playerOutfit[existingIndex] = { category, tag, imageUrl };
-              }
-          }
-          updatePlayerAppearance();
+    img.addEventListener('click', function () {
+      handleClick(category, tag, imageUrl);
+    });
 
-          console.log("Updated playerOutfit:", playerOutfit);
-      });
-
-      const slotElement = document.getElementById(`slot${i}`);
-      if (slotElement) {
-          slotElement.appendChild(img);
-      }
+    const slotElement = document.getElementById(`slot${i}`);
+    if (slotElement) {
+      slotElement.appendChild(img);
+    }
   }
+}
+
+function handleClick(category, tag, imageUrl) {
+  const existingIndex = playerOutfit.findIndex(item => item.category === category);
+  const matchOutfit = isMatchingOutfit({ category, tag });
+  if (matchOutfit) {
+    if (existingIndex !== -1) {
+      playerOutfit[existingIndex] = { category, tag, imageUrl };
+    } else {
+      playerOutfit.push({ category, tag, imageUrl });
+    }
+    timerInstance.remainingTime += 2;
+    timerInstance.updateTimerDisplay();
+  } else {
+    if (existingIndex === -1) {
+      playerOutfit.push({ category, tag, imageUrl });
+    } else {
+      playerOutfit[existingIndex] = { category, tag, imageUrl };
+    }
+  }
+  updatePlayerAppearance();
+  console.log("Updated playerOutfit:", playerOutfit);
 }
 
 function isMatchingOutfit(selectedClothing) {
