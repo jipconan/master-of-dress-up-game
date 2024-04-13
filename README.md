@@ -9,6 +9,9 @@ With a variety of clothing options and themes to choose from, players must win t
 ## Game link
 https://jipconan.github.io/master-of-dress-up-game/
 
+## Game deveolopment pipeline
+https://drive.google.com/file/d/12q4_5epaszzGKYpsSmNbhf8YNJ16WoJc/view?usp=sharing
+
 ## Key Features:
 
 - Dress up your character with various clothing options.
