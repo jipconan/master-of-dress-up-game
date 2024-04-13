@@ -7,10 +7,10 @@ In this game, players are challenged to match outfits to specific themes within 
 With a variety of clothing options and themes to choose from, players must win the game to win the admiration of their friends.  
 
 ## Game link
-https://jipconan.github.io/master-of-dress-up-game/
+[DEMO link](https://jipconan.github.io/master-of-dress-up-game/)
 
 ## Game deveolopment pipeline
-https://drive.google.com/file/d/12q4_5epaszzGKYpsSmNbhf8YNJ16WoJc/view?usp=sharing
+[draw.io](https://drive.google.com/file/d/12q4_5epaszzGKYpsSmNbhf8YNJ16WoJc/view?usp=sharing)
 
 ## Key Features:
 
