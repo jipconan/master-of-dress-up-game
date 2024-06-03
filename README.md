@@ -56,7 +56,7 @@ With a variety of clothing options and themes to choose from, players must win t
 ## Credits:
 
 Image Assets: 
-- My girlfriend 
+- My secret friend 
 - icons8.com
 - perchance.org
 - tenor.com
@@ -67,7 +67,7 @@ Tech Websites:
 - github
 
 Thanks:
-- My girlfriend 
+- My secret friend 
 - Waihon
 - Shao Quan
 - Classmates of SEIF-17
